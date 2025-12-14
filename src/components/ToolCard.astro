@@ -1,0 +1,7 @@
+---
+const {title, description, href} = Astro.props;
+---
+<article class="tool-card">
+  <h3><a href={href || '/tools'} style="color:inherit;text-decoration:none">{title}</a></h3>
+  <p>{description}</p>
+</article>

@@ -1,0 +1,404 @@
+{
+  "Asia/Kolkata": {
+    "city": "Mumbai, India",
+    "lat": 19.076,
+    "lon": 72.8777,
+    "country": "India"
+  },
+  "Asia/Karachi": {
+    "city": "Karachi, Pakistan",
+    "lat": 24.8607,
+    "lon": 67.0011,
+    "country": "Pakistan"
+  },
+  "Asia/Dubai": {
+    "city": "Dubai, UAE",
+    "lat": 25.2048,
+    "lon": 55.2708,
+    "country": "UAE"
+  },
+  "Europe/London": {
+    "city": "London, UK",
+    "lat": 51.5074,
+    "lon": -0.1278,
+    "country": "UK"
+  },
+  "Europe/Berlin": {
+    "city": "Berlin, Germany",
+    "lat": 52.52,
+    "lon": 13.405,
+    "country": "Germany"
+  },
+  "America/New_York": {
+    "city": "New York, USA",
+    "lat": 40.7128,
+    "lon": -74.006,
+    "country": "USA"
+  },
+  "America/Los_Angeles": {
+    "city": "Los Angeles, USA",
+    "lat": 34.0522,
+    "lon": -118.2437,
+    "country": "USA"
+  },
+  "Asia/Tokyo": {
+    "city": "Tokyo, Japan",
+    "lat": 35.6895,
+    "lon": 139.6917,
+    "country": "Japan"
+  },
+  "Asia/Shanghai": {
+    "city": "Shanghai, China",
+    "lat": 31.2304,
+    "lon": 121.4737,
+    "country": "China"
+  },
+  "Australia/Sydney": {
+    "city": "Sydney, Australia",
+    "lat": -33.8688,
+    "lon": 151.2093,
+    "country": "Australia"
+  },
+  "Pacific/Auckland": {
+    "city": "Auckland, NZ",
+    "lat": -36.8485,
+    "lon": 174.7633,
+    "country": "New Zealand"
+  },
+  "America/Sao_Paulo": {
+    "city": "Sao Paulo, Brazil",
+    "lat": -23.5505,
+    "lon": -46.6333,
+    "country": "Brazil"
+  },
+  "America/Anchorage": {
+    "city": "Anchorage, USA",
+    "lat": 61.2181,
+    "lon": -149.9003,
+    "country": "USA"
+  },
+  "Europe/Moscow": {
+    "city": "Moscow, Russia",
+    "lat": 55.7558,
+    "lon": 37.6173,
+    "country": "Russia"
+  },
+  "Asia/Kathmandu": {
+    "city": "Kathmandu, Nepal",
+    "lat": 27.7172,
+    "lon": 85.324,
+    "country": "Nepal"
+  },
+  "Africa/Johannesburg": {
+    "city": "Johannesburg, South Africa",
+    "lat": -26.2041,
+    "lon": 28.0473,
+    "country": "South Africa"
+  },
+  "Asia/Yangon": {
+    "city": "Yangon, Myanmar",
+    "lat": 16.8409,
+    "lon": 96.1735,
+    "country": "Myanmar"
+  },
+  "Europe/Paris": {
+    "city": "Paris, France",
+    "lat": 48.8566,
+    "lon": 2.3522,
+    "country": "France"
+  },
+  "Europe/Madrid": {
+    "city": "Madrid, Spain",
+    "lat": 40.4168,
+    "lon": -3.7038,
+    "country": "Spain"
+  },
+  "Europe/Rome": {
+    "city": "Rome, Italy",
+    "lat": 41.9028,
+    "lon": 12.4964,
+    "country": "Italy"
+  },
+  "Europe/Amsterdam": {
+    "city": "Amsterdam, Netherlands",
+    "lat": 52.3676,
+    "lon": 4.9041,
+    "country": "Netherlands"
+  },
+  "Europe/Istanbul": {
+    "city": "Istanbul, Turkey",
+    "lat": 41.0082,
+    "lon": 28.9784,
+    "country": "Turkey"
+  },
+  "Asia/Seoul": {
+    "city": "Seoul, South Korea",
+    "lat": 37.5665,
+    "lon": 126.978,
+    "country": "South Korea"
+  },
+  "Asia/Singapore": {
+    "city": "Singapore",
+    "lat": 1.3521,
+    "lon": 103.8198,
+    "country": "Singapore"
+  },
+  "Asia/Bangkok": {
+    "city": "Bangkok, Thailand",
+    "lat": 13.7563,
+    "lon": 100.5018,
+    "country": "Thailand"
+  },
+  "Asia/Hong_Kong": {
+    "city": "Hong Kong",
+    "lat": 22.3193,
+    "lon": 114.1694,
+    "country": "Hong Kong"
+  },
+  "America/Chicago": {
+    "city": "Chicago, USA",
+    "lat": 41.8781,
+    "lon": -87.6298,
+    "country": "USA"
+  },
+  "America/Denver": {
+    "city": "Denver, USA",
+    "lat": 39.7392,
+    "lon": -104.9903,
+    "country": "USA"
+  },
+  "America/Toronto": {
+    "city": "Toronto, Canada",
+    "lat": 43.6532,
+    "lon": -79.3832,
+    "country": "Canada"
+  },
+  "America/Mexico_City": {
+    "city": "Mexico City, Mexico",
+    "lat": 19.4326,
+    "lon": -99.1332,
+    "country": "Mexico"
+  },
+  "America/Bogota": {
+    "city": "Bogota, Colombia",
+    "lat": 4.711,
+    "lon": -74.0721,
+    "country": "Colombia"
+  },
+  "America/Lima": {
+    "city": "Lima, Peru",
+    "lat": -12.0464,
+    "lon": -77.0428,
+    "country": "Peru"
+  },
+  "America/Santiago": {
+    "city": "Santiago, Chile",
+    "lat": -33.4489,
+    "lon": -70.6693,
+    "country": "Chile"
+  },
+  "America/Montevideo": {
+    "city": "Montevideo, Uruguay",
+    "lat": -34.9011,
+    "lon": -56.1645,
+    "country": "Uruguay"
+  },
+  "Atlantic/Azores": {
+    "city": "Ponta Delgada, Azores",
+    "lat": 37.7412,
+    "lon": -25.6756,
+    "country": "Portugal"
+  },
+  "Africa/Cairo": {
+    "city": "Cairo, Egypt",
+    "lat": 30.0444,
+    "lon": 31.2357,
+    "country": "Egypt"
+  },
+  "Africa/Nairobi": {
+    "city": "Nairobi, Kenya",
+    "lat": -1.2921,
+    "lon": 36.8219,
+    "country": "Kenya"
+  },
+  "Africa/Accra": {
+    "city": "Accra, Ghana",
+    "lat": 5.6037,
+    "lon": -0.187,
+    "country": "Ghana"
+  },
+  "Africa/Casablanca": {
+    "city": "Casablanca, Morocco",
+    "lat": 33.5731,
+    "lon": -7.5898,
+    "country": "Morocco"
+  },
+  "Asia/Jerusalem": {
+    "city": "Jerusalem, Israel",
+    "lat": 31.7683,
+    "lon": 35.2137,
+    "country": "Israel"
+  },
+  "Asia/Tehran": {
+    "city": "Tehran, Iran",
+    "lat": 35.6892,
+    "lon": 51.389,
+    "country": "Iran"
+  },
+  "Asia/Baghdad": {
+    "city": "Baghdad, Iraq",
+    "lat": 33.3152,
+    "lon": 44.3661,
+    "country": "Iraq"
+  },
+  "Asia/Kuala_Lumpur": {
+    "city": "Kuala Lumpur, Malaysia",
+    "lat": 3.139,
+    "lon": 101.6869,
+    "country": "Malaysia"
+  },
+  "Asia/Manila": {
+    "city": "Manila, Philippines",
+    "lat": 14.5995,
+    "lon": 120.9842,
+    "country": "Philippines"
+  },
+  "Asia/Jakarta": {
+    "city": "Jakarta, Indonesia",
+    "lat": -6.2088,
+    "lon": 106.8456,
+    "country": "Indonesia"
+  },
+  "Asia/Ho_Chi_Minh": {
+    "city": "Ho Chi Minh City, Vietnam",
+    "lat": 10.8231,
+    "lon": 106.6297,
+    "country": "Vietnam"
+  },
+  "Asia/Taipei": {
+    "city": "Taipei, Taiwan",
+    "lat": 25.033,
+    "lon": 121.5654,
+    "country": "Taiwan"
+  },
+  "Asia/Colombo": {
+    "city": "Colombo, Sri Lanka",
+    "lat": 6.9271,
+    "lon": 79.8612,
+    "country": "Sri Lanka"
+  },
+  "Asia/Almaty": {
+    "city": "Almaty, Kazakhstan",
+    "lat": 43.222,
+    "lon": 76.8512,
+    "country": "Kazakhstan"
+  },
+  "Europe/Zurich": {
+    "city": "Zurich, Switzerland",
+    "lat": 47.3769,
+    "lon": 8.5417,
+    "country": "Switzerland"
+  },
+  "Europe/Vienna": {
+    "city": "Vienna, Austria",
+    "lat": 48.2082,
+    "lon": 16.3738,
+    "country": "Austria"
+  },
+  "Europe/Prague": {
+    "city": "Prague, Czech Republic",
+    "lat": 50.0755,
+    "lon": 14.4378,
+    "country": "Czech Republic"
+  },
+  "Europe/Brussels": {
+    "city": "Brussels, Belgium",
+    "lat": 50.8503,
+    "lon": 4.3517,
+    "country": "Belgium"
+  },
+  "Europe/Athens": {
+    "city": "Athens, Greece",
+    "lat": 37.9838,
+    "lon": 23.7275,
+    "country": "Greece"
+  },
+  "Europe/Bucharest": {
+    "city": "Bucharest, Romania",
+    "lat": 44.4268,
+    "lon": 26.1025,
+    "country": "Romania"
+  },
+  "Europe/Stockholm": {
+    "city": "Stockholm, Sweden",
+    "lat": 59.3293,
+    "lon": 18.0686,
+    "country": "Sweden"
+  },
+  "Europe/Helsinki": {
+    "city": "Helsinki, Finland",
+    "lat": 60.1699,
+    "lon": 24.9384,
+    "country": "Finland"
+  },
+  "Europe/Tallinn": {
+    "city": "Tallinn, Estonia",
+    "lat": 59.437,
+    "lon": 24.7536,
+    "country": "Estonia"
+  },
+  "Europe/Riga": {
+    "city": "Riga, Latvia",
+    "lat": 56.9496,
+    "lon": 24.1052,
+    "country": "Latvia"
+  },
+  "Europe/Vilnius": {
+    "city": "Vilnius, Lithuania",
+    "lat": 54.6872,
+    "lon": 25.2797,
+    "country": "Lithuania"
+  },
+  "America/Caracas": {
+    "city": "Caracas, Venezuela",
+    "lat": 10.4806,
+    "lon": -66.9036,
+    "country": "Venezuela"
+  },
+  "America/Asuncion": {
+    "city": "Asuncion, Paraguay",
+    "lat": -25.2637,
+    "lon": -57.5759,
+    "country": "Paraguay"
+  },
+  "Pacific/Fiji": {
+    "city": "Suva, Fiji",
+    "lat": -18.1416,
+    "lon": 178.4419,
+    "country": "Fiji"
+  },
+  "Pacific/Guam": {
+    "city": "Hagatna, Guam",
+    "lat": 13.475,
+    "lon": 144.75,
+    "country": "Guam"
+  },
+  "Pacific/Apia": {
+    "city": "Apia, Samoa",
+    "lat": -13.8507,
+    "lon": -171.7514,
+    "country": "Samoa"
+  },
+  "Pacific/Chatham": {
+    "city": "Chatham Islands, NZ",
+    "lat": -43.8167,
+    "lon": -176.5417,
+    "country": "New Zealand"
+  },
+  "Etc/UTC": {
+    "city": "UTC",
+    "lat": 0,
+    "lon": 0,
+    "country": "UTC"
+  }
+}

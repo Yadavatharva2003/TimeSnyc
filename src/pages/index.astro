@@ -1,0 +1,121 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ToolCard from '../components/ToolCard.astro';
+import AdSlot from '../components/AdSlot.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>TimeSync — Time Planning & Timezone Tools</title>
+    <meta
+      name="description"
+      content="Plan meetings across time zones, compare work hours, and avoid daylight-saving mistakes with TimeSync."
+    />
+
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#000000" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles/style.css" />
+  </head>
+
+  <body>
+    <Header />
+
+    <main class="container">
+
+      <!-- HERO / CTA -->
+      <section class="hero">
+        <h1>Plan Meetings Across Time Zones — Without Confusion</h1>
+        <p>
+          Find overlapping work hours, avoid DST mistakes, and share one simple
+          link with everyone.
+        </p>
+
+        <div class="cta-group">
+          <a href="/meeting-planner" class="cta-primary">
+            Plan a Meeting
+          </a>
+          <a href="/timezone-converter" class="cta-secondary">
+            Convert Time Zones
+          </a>
+        </div>
+      </section>
+
+      <!-- CORE TOOLS -->
+      <section class="section">
+        <h2>TimeSync Tools</h2>
+
+        <div class="tools-grid">
+          <ToolCard
+            title="Meeting Time Planner"
+            description="Compare time zones, highlight overlap hours, and share a single meeting link."
+            href="/meeting-planner"
+          />
+
+          <ToolCard
+            title="Timezone Converter"
+            description="Convert times between countries and IANA timezones with DST accuracy."
+            href="/timezone-converter"
+          />
+
+          <ToolCard
+            title="Time Difference & Work Hours"
+            description="See time differences and best overlap windows between regions."
+            href="/time-difference"
+          />
+
+          <ToolCard
+            title="World Clock (Professional)"
+            description="Track multiple locations with DST indicators and work-hour highlights."
+            href="/world-clock"
+          />
+
+          <ToolCard
+            title="Daylight Saving Time Checker"
+            description="Check current DST status and upcoming time changes by country."
+            href="/dst-checker"
+          />
+        </div>
+      </section>
+
+      <!-- AD -->
+      <div style="margin-top:18px">
+        <AdSlot slot="1234567890" />
+      </div>
+
+      <!-- BLOG SUPPORT -->
+      <section class="section" style="margin-top:28px">
+        <h2>Learn & Plan Better</h2>
+
+        <div class="blog-grid">
+          <article class="post-card">
+            <h4>How to Schedule Meetings Across Time Zones</h4>
+            <p>Practical strategies for remote teams and global work.</p>
+          </article>
+
+          <article class="post-card">
+            <h4>Daylight Saving Time Explained</h4>
+            <p>Understand DST changes and avoid costly scheduling mistakes.</p>
+          </article>
+
+          <article class="post-card">
+            <h4>Best Working Hours Between India, Europe & US</h4>
+            <p>Real overlap windows that actually work.</p>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>

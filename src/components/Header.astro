@@ -1,0 +1,27 @@
+---
+import Games from './Games.astro';
+
+import CookieConsent from './CookieConsent.astro';
+---
+<header class="header container">
+  <!-- Header.astro -->
+<a id="logo-run-clock" class="logo" href="/">
+  <img src="/assets/img/logo.svg" style="width:28px;height:28px"/>
+  <span>TimeSync</span>
+</a>
+
+
+  <nav class="nav">
+    <a id="site-logo" href="/" title="TimeSync — click for games">Home</a>
+    <a href="#" onclick="window.__timesync_games?.open(); return false;">Games</a>
+    <a href="/world-clock">World Clock</a>
+    <a href="/meeting-planner">Meeting Plannerr</a>
+    <a href="/tools">Tools</a>
+    <a href="/blog">Blog</a>
+    <a href="/best-tools">Best Tools</a>
+  </nav>
+</header>
+
+<Games />
+
+<CookieConsent />

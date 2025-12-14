@@ -1,0 +1,25 @@
+---
+const { slot = '', format = 'auto' } = Astro.props;
+---
+<div class="ad-slot" data-slot={slot} data-format={format} id={`ad-${Math.random().toString(36).slice(2,9)}`}>
+  <div class="ad-placeholder" aria-hidden="true">
+    <div class="ad-label">Sponsored</div>
+  </div>
+</div>
+
+<script type="module">
+  import { registerAdSlot } from '/src/scripts/ads-manager.js';
+  const el = document.currentScript.previousElementSibling;
+  registerAdSlot(el);
+  const pref = localStorage.getItem('timesync_cookie_pref');
+  try{
+    const p = JSON.parse(pref || 'null');
+    if(p && p.ads === true && window.__timesyncAcceptAds) window.__timesyncAcceptAds();
+  }catch(e){}
+</script>
+
+<style>
+.ad-slot{min-height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px solid rgba(0,0,0,0.04);overflow:hidden}
+.ad-placeholder{padding:18px;color:var(--muted);font-size:13px}
+.ad-label{font-size:11px;color:var(--muted);opacity:0.8;margin-bottom:6px}
+</style>

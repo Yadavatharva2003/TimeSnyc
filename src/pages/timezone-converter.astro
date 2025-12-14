@@ -1,0 +1,453 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import AdSlot from "../components/AdSlot.astro";
+import { TIMEZONES } from "../scripts/timezones.js";
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Timezone Converter — TimeSync</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/style.css" />
+
+  <!-- Luxon (timezone-safe conversions) -->
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js" defer></script>
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0b1220;
+      --glass: rgba(11,18,32,0.04);
+      --primary:#0866ff;
+      --title-size: 52px; /* increased title size */
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+    html,body{height:100%; margin:0; background:var(--bg); color:var(--accent); -webkit-font-smoothing:antialiased;}
+
+    .page { max-width: 920px; margin: 48px auto; padding: 0 20px; }
+
+    .hero {
+      display:flex;
+      align-items:center;
+      justify-content:center; /* centered heading */
+      gap:12px;
+      margin-bottom:20px;
+      text-align:center;
+    }
+    .hero h1 { margin:0; font-weight:600; font-size:var(--title-size); letter-spacing:-0.2px; } /* uses var */
+    .hero p { margin:6px 0 0 0; color:var(--muted); font-size:13px; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), var(--card));
+      border-radius:14px;
+      padding:18px;
+      box-shadow: 0 8px 30px rgba(9,18,33,0.06);
+      border: 1px solid rgba(11,18,32,0.04);
+      max-width:820px;
+      margin: 0 auto;
+    }
+
+    .grid { display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start; }
+    .compact-field { display:flex; flex-direction:column; gap:8px; }
+    label span { font-size:12px; color:var(--muted); }
+
+    .input { height:44px; padding:8px 12px; border-radius:10px; border:1px solid rgba(11,18,32,0.06); background:transparent; font-size:14px; outline:none; }
+
+    .controls { display:flex; gap:8px; margin-top:12px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 12px; border-radius:10px; border:0; cursor:pointer; font-weight:600; font-size:13px; height:40px; }
+    .btn-primary { background:var(--primary); color:#fff; box-shadow:0 6px 18px rgba(8,102,255,0.18); }
+    .btn-ghost { background:transparent; border:1px solid rgba(11,18,32,0.06); color:var(--accent); }
+
+    .result { margin-top:6px; padding:12px; background:var(--glass); border-radius:10px; font-size:14px; color:var(--accent); min-height:56px; }
+
+    /* combobox container */
+    .tz-combobox {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    /* combobox input */
+    .tz-input {
+      flex: 1;
+      height: 44px;
+      padding: 8px 36px 8px 12px; /* extra right padding for arrow */
+      border-radius: 10px;
+      border: 1px solid rgba(11,18,32,0.06);
+      background: #fff;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+    }
+    .tz-input:focus { outline: 2px solid rgba(8,102,255,0.12); }
+
+    /* dropdown arrow */
+    .tz-arrow {
+      position: absolute;
+      right: 12px;
+      pointer-events: none;
+    }
+
+    /* panel: scroll-only list (no search) */
+    .panel {
+      position:absolute;
+      z-index:1200;
+      top:52px;
+      right:0;
+      left:0;
+      background:var(--card);
+      border-radius:10px;
+      border:1px solid rgba(11,18,32,0.06);
+      box-shadow:0 10px 30px rgba(11,18,32,0.06);
+      padding:8px;
+    }
+    .list {
+      max-height:120px; /* reduced height to show fewer rows */
+      overflow:auto;
+      padding:6px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      scrollbar-width:thin;
+    }
+    .item {
+      padding:8px 10px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:13px;
+      color:var(--accent);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .item:hover, .item:focus { background: rgba(8,102,255,0.06); outline:none; }
+
+    .muted { color:var(--muted); font-size:12px; }
+
+    @media (max-width:800px){
+      .grid { grid-template-columns: 1fr; }
+      .panel { position:static; margin-top:8px; }
+    }
+  </style>
+</head>
+
+<body>
+  <Header />
+
+  <main class="page">
+    <section class="hero">
+      <div>
+        <h1>Timezone Converter</h1>
+        <p>Accurate conversions — minimal UI.</p>
+      </div>
+    </section>
+
+    <AdSlot slot="tz-top" />
+
+    <section class="card" aria-label="Timezone converter">
+      <div class="grid">
+        <!-- left -->
+        <div>
+          <div class="compact-field" style="margin-bottom:12px;">
+            <label><span>From</span></label>
+            <div class="dropdown" id="fromDropdown">
+              <div class="tz-combobox">
+                <input id="fromInput" class="tz-input" placeholder="Select timezone" aria-haspopup="listbox" aria-expanded="false" />
+                <svg class="tz-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M7 10l5 5 5-5" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="compact-field">
+            <label><span>Date & time (From)</span></label>
+            <input id="timeInput" class="input" type="datetime-local" />
+            <div class="controls" style="margin-top:10px;">
+              <button id="nowBtn" class="btn btn-ghost">Now</button>
+              <button id="convertBtn" class="btn btn-primary">Convert</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- right -->
+        <div>
+          <div class="compact-field" style="margin-bottom:8px;">
+            <label><span>To</span></label>
+            <div class="dropdown" id="toDropdown">
+              <div class="tz-combobox">
+                <input id="toInput" class="tz-input" placeholder="Select timezone" aria-haspopup="listbox" aria-expanded="false" />
+                <svg class="tz-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M7 10l5 5 5-5" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <div class="small">Result</div>
+            <div id="result" class="result">Enter date & click Convert.</div>
+
+            <div style="display:flex; gap:8px; margin-top:12px;">
+              <button id="swapBtn" class="btn btn-ghost" style="flex:1">Swap</button>
+              <button id="copyBtn" class="btn btn-ghost" style="width:110px">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <AdSlot slot="tz-bottom" />
+  </main>
+
+  <Footer />
+
+  <script type="module">
+    const { DateTime } = luxon;
+
+    // DOM refs
+    const fromDropdown = document.getElementById("fromDropdown");
+    const toDropdown = document.getElementById("toDropdown");
+    const fromInput = document.getElementById("fromInput");
+    const toInput = document.getElementById("toInput");
+
+    const timeInput = document.getElementById("timeInput");
+    const nowBtn = document.getElementById("nowBtn");
+    const convertBtn = document.getElementById("convertBtn");
+    const swapBtn = document.getElementById("swapBtn");
+    const copyBtn = document.getElementById("copyBtn");
+    const result = document.getElementById("result");
+
+    // helper label with offset
+    function tzLabel(tz) {
+      try {
+        const dt = DateTime.now().setZone(tz);
+        const off = dt.offset;
+        const sign = off >= 0 ? "+" : "-";
+        const abs = Math.abs(off);
+        const hh = String(Math.floor(abs/60)).padStart(2,"0");
+        const mm = String(abs%60).padStart(2,"0");
+        return `(UTC${sign}${hh}:${mm}) ${tz}`;
+      } catch {
+        return tz;
+      }
+    }
+
+    // timezone loaders (silent)
+    async function fetchWorld() {
+      try { const r = await fetch("https://worldtimeapi.org/api/timezone"); if (!r.ok) throw 0; const j = await r.json(); if (!Array.isArray(j) || !j.length) throw 0; return j; } catch { return null; }
+    }
+    function fetchServer() { try { return JSON.parse(String.raw`${JSON.stringify(TIMEZONES ?? [])}`); } catch { return null; } }
+    function fetchIntl() { try { if (typeof Intl !== "undefined" && typeof Intl.supportedValuesOf === "function") return Intl.supportedValuesOf("timeZone"); } catch {} return null; }
+
+    let TZ_LIST = [];
+    (async ()=>{
+      let list = await fetchWorld();
+      if (!list || !list.length) list = fetchServer();
+      if (!list || !list.length) list = fetchIntl();
+      if (!list || !list.length) {
+        fromLabel.textContent = "Unavailable";
+        toLabel.textContent = "Unavailable";
+        result.textContent = "Timezone list unavailable.";
+        return;
+      }
+      TZ_LIST = list;
+      // sensible defaults
+      const defaultFrom = TZ_LIST.includes("Asia/Kolkata") ? "Asia/Kolkata" : TZ_LIST[0];
+      const defaultTo = TZ_LIST.includes("America/New_York") ? "America/New_York" : TZ_LIST[Math.min(1,TZ_LIST.length-1)];
+      setFrom(defaultFrom);
+      setTo(defaultTo);
+    })();
+
+    // create simple panel (scroll-only list)
+    function createPanel(container, onSelect, filter = "") {
+      const panel = document.createElement("div");
+      panel.className = "panel";
+      panel.innerHTML = `<div class="list" role="listbox" tabindex="0"></div>`;
+      const list = panel.querySelector(".list");
+
+      function render() {
+        list.innerHTML = "";
+        if (!TZ_LIST || !TZ_LIST.length) {
+          const p = document.createElement("div"); p.className="muted"; p.textContent = "Unavailable"; list.appendChild(p); return;
+        }
+        // show favorites first for convenience
+        const favorites = ["Asia/Kolkata","UTC","Europe/London","America/New_York","America/Los_Angeles"];
+        const ordered = TZ_LIST.slice().sort((a,b)=>{
+          const ai=favorites.indexOf(a), bi=favorites.indexOf(b);
+          if (ai !== -1 || bi !== -1) return (ai===-1?1:-1)-(bi===-1?1:-1);
+          return a.localeCompare(b);
+        });
+        const filtered = ordered.filter(tz => {
+          const friendly = tz.split("/").pop()?.replace(/_/g," ") || tz;
+          return friendly.toLowerCase().includes(filter.toLowerCase());
+        });
+        for (const tz of filtered) {
+          const it = document.createElement("div");
+          it.className = "item";
+          it.tabIndex = 0;
+          it.dataset.tz = tz;
+          // display friendly city name left, full tz (with offset) right
+          const left = document.createElement("span");
+          left.textContent = tz.split("/").pop()?.replace(/_/g," ") || tz;
+          const right = document.createElement("small");
+          right.className = "muted";
+          right.textContent = tzLabel(tz);
+          it.appendChild(left);
+          it.appendChild(right);
+          it.addEventListener("click", ()=> onSelect(tz));
+          it.addEventListener("keydown", (e)=> { if (e.key === "Enter") onSelect(tz); });
+          list.appendChild(it);
+        }
+      }
+      render();
+      return panel;
+    }
+
+    // panel state
+    let fromPanel=null, toPanel=null;
+    function closePanels() {
+      if (fromPanel) { fromPanel.remove(); fromPanel=null; fromInput.setAttribute("aria-expanded","false"); }
+      if (toPanel) { toPanel.remove(); toPanel=null; toInput.setAttribute("aria-expanded","false"); }
+      document.removeEventListener("click", docClick);
+      document.removeEventListener("keydown", docKeydown);
+    }
+    function docClick(e) {
+      if (!fromInput.contains(e.target) && !(fromPanel && fromPanel.contains(e.target)) &&
+          !toInput.contains(e.target) && !(toPanel && toPanel.contains(e.target))) {
+        closePanels();
+      }
+    }
+    function docKeydown(e) { if (e.key === "Escape") closePanels(); }
+
+    function openFromPanel() {
+      closePanels();
+      fromPanel = createPanel(fromDropdown, (tz)=> { setFrom(tz); closePanels(); fromTrigger.focus(); });
+      fromDropdown.appendChild(fromPanel);
+      fromTrigger.setAttribute("aria-expanded","true");
+      document.addEventListener("click", docClick);
+      document.addEventListener("keydown", docKeydown);
+      const first = fromPanel.querySelector(".item");
+      if (first) first.focus();
+    }
+    function openToPanel() {
+      closePanels();
+      toPanel = createPanel(toDropdown, (tz)=> { setTo(tz); closePanels(); toTrigger.focus(); });
+      toDropdown.appendChild(toPanel);
+      toTrigger.setAttribute("aria-expanded","true");
+      document.addEventListener("click", docClick);
+      document.addEventListener("keydown", docKeydown);
+      const first = toPanel.querySelector(".item");
+      if (first) first.focus();
+    }
+
+    // open panels on click or focus
+    fromInput.addEventListener("click", openFromPanel);
+    toInput.addEventListener("click", openToPanel);
+    fromInput.addEventListener("focus", openFromPanel);
+    toInput.addEventListener("focus", openToPanel);
+    fromInput.addEventListener("keydown", (e)=> { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFromPanel(); } });
+    toInput.addEventListener("keydown", (e)=> { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openToPanel(); } });
+
+    // filter on input
+    fromInput.addEventListener("input", (e)=> {
+      if (fromPanel) {
+        const list = fromPanel.querySelector(".list");
+        list.innerHTML = "";
+        const filteredPanel = createPanel(fromDropdown, (tz)=> { setFrom(tz); closePanels(); fromInput.focus(); }, e.target.value);
+        const newList = filteredPanel.querySelector(".list");
+        list.innerHTML = newList.innerHTML;
+        // reattach events
+        list.querySelectorAll(".item").forEach(it => {
+          const tz = it.dataset.tz;
+          it.addEventListener("click", ()=> { setFrom(tz); closePanels(); fromInput.focus(); });
+          it.addEventListener("keydown", (e)=> { if (e.key === "Enter") { setFrom(tz); closePanels(); fromInput.focus(); } });
+        });
+      }
+    });
+    toInput.addEventListener("input", (e)=> {
+      if (toPanel) {
+        const list = toPanel.querySelector(".list");
+        list.innerHTML = "";
+        const filteredPanel = createPanel(toDropdown, (tz)=> { setTo(tz); closePanels(); toInput.focus(); }, e.target.value);
+        const newList = filteredPanel.querySelector(".list");
+        list.innerHTML = newList.innerHTML;
+        // reattach events
+        list.querySelectorAll(".item").forEach(it => {
+          const tz = it.dataset.tz;
+          it.addEventListener("click", ()=> { setTo(tz); closePanels(); toInput.focus(); });
+          it.addEventListener("keydown", (e)=> { if (e.key === "Enter") { setTo(tz); closePanels(); toInput.focus(); } });
+        });
+      }
+    });
+
+    // selected values
+    let fromValue = "", toValue = "";
+    function setFrom(tz) {
+      fromValue = tz;
+      const friendly = tz.split("/").pop()?.replace(/_/g," ") || tz;
+      fromInput.value = friendly;
+    }
+    function setTo(tz) {
+      toValue = tz;
+      const friendly = tz.split("/").pop()?.replace(/_/g," ") || tz;
+      toInput.value = friendly;
+    }
+
+    // Now button
+    nowBtn.addEventListener("click", ()=> {
+      if (!fromValue) return result.textContent = "Choose a From timezone.";
+      const nowInFrom = DateTime.now().setZone(fromValue);
+      timeInput.value = nowInFrom.toISO({suppressMilliseconds:true,suppressSeconds:true}).slice(0,16);
+      result.textContent = `Now set to ${fromValue}.`;
+    });
+
+    // Convert
+    convertBtn.addEventListener("click", ()=> {
+      if (!timeInput.value) return result.textContent = "Choose a date/time.";
+      if (!fromValue || !toValue) return result.textContent = "Select both timezones.";
+      const dtFrom = DateTime.fromISO(timeInput.value, { zone: fromValue });
+      if (!dtFrom.isValid) return result.textContent = "Invalid date/time.";
+      const dtTo = dtFrom.setZone(toValue);
+      const fmtTo = dtTo.toFormat("dd LLL yyyy, HH:mm");
+      const off = dtTo.offset; const sign = off>=0?"+":"-"; const abs=Math.abs(off);
+      const hh = String(Math.floor(abs/60)).padStart(2,"0"), mm = String(abs%60).padStart(2,"0");
+      result.textContent = `${fmtTo} — ${toValue} (UTC${sign}${hh}:${mm})`;
+      result.dataset.isoUtc = dtTo.toUTC().toISO();
+    });
+
+    // Swap
+    swapBtn.addEventListener("click", ()=> {
+      if (!fromValue || !toValue) return result.textContent = "Select both timezones.";
+      const a = fromValue; setFrom(toValue); setTo(a);
+      if (timeInput.value) {
+        const dtOld = DateTime.fromISO(timeInput.value, { zone: a });
+        if (dtOld.isValid) {
+          const newFrom = dtOld.setZone(fromValue);
+          timeInput.value = newFrom.toISO({suppressMilliseconds:true,suppressSeconds:true}).slice(0,16);
+          result.textContent = "Swapped & adjusted input.";
+          return;
+        }
+      }
+      result.textContent = "Swapped.";
+    });
+
+    // Copy
+    copyBtn.addEventListener("click", async ()=> {
+      const txt = result.textContent || "";
+      if (!txt.trim()) { copyBtn.textContent="Nothing"; setTimeout(()=>copyBtn.textContent="Copy",1200); return; }
+      const iso = result.dataset.isoUtc ? `\nISO(UTC): ${result.dataset.isoUtc}` : "";
+      try { await navigator.clipboard.writeText(txt + iso); copyBtn.textContent="Copied"; } catch {
+        const ta = document.createElement("textarea"); ta.value = txt + iso; document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); copyBtn.textContent="Copied"; } catch { copyBtn.textContent="Fail"; } finally { document.body.removeChild(ta); }
+      }
+      setTimeout(()=>copyBtn.textContent="Copy",1200);
+    });
+
+    // Close panels on resize to avoid misplacement
+    window.addEventListener("resize", ()=> closePanels());
+  </script>
+</body>
+</html>

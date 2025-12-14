@@ -1,0 +1,269 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Meeting Planner — TimeSync</title>
+
+  <meta
+    name="description"
+    content="Plan meetings across time zones. Find overlapping working hours, avoid DST mistakes, and share one simple link."
+  />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/style.css">
+</head>
+
+<body>
+  <Header/>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Plan Meetings Across Time Zones</h1>
+      <p>
+        Compare time zones, find overlapping working hours, and share one link
+        everyone understands.
+      </p>
+    </section>
+
+    <!-- CONTROLS -->
+    <section class="section">
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+
+        <!-- LEFT -->
+        <div style="flex:1;min-width:320px">
+
+          <!-- DATE -->
+          <label class="label">Meeting date</label>
+          <input type="date" id="meetingDate" class="input" />
+
+          <!-- WORK HOURS -->
+          <div style="display:flex;gap:12px;margin-top:12px">
+            <div>
+              <label class="label">Work start</label>
+              <select id="workStart" class="select"></select>
+            </div>
+            <div>
+              <label class="label">Work end</label>
+              <select id="workEnd" class="select"></select>
+            </div>
+          </div>
+
+          <!-- PARTICIPANTS -->
+          <h3 style="margin-top:20px">Participants</h3>
+          <div id="participants"></div>
+
+          <button class="button" id="addParticipant" style="margin-top:8px">
+            Add Participant
+          </button>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div style="flex:1;min-width:300px">
+          <h3>Suggested 1-hour Slots</h3>
+          <div id="slots" style="margin-top:12px;color:var(--muted)"></div>
+
+          <button class="button" id="copyLink" style="margin-top:12px;display:none">
+            Copy Shareable Link
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <Footer/>
+
+  <!-- SCRIPT -->
+  <script type="module">
+
+  /* -----------------------------------------
+     LOAD TIMEZONES
+  ----------------------------------------- */
+  let TIMEZONES = [];
+  try {
+    const mod = await import('/scripts/timezones.js');
+    TIMEZONES = mod.TIMEZONES || [];
+  } catch {
+    TIMEZONES = ['UTC','Asia/Kolkata','America/New_York','Europe/London'];
+  }
+
+  const participantsEl = document.getElementById('participants');
+  const slotsEl = document.getElementById('slots');
+  const meetingDate = document.getElementById('meetingDate');
+  const workStart = document.getElementById('workStart');
+  const workEnd = document.getElementById('workEnd');
+  const copyBtn = document.getElementById('copyLink');
+
+  /* -----------------------------------------
+     INIT CONTROLS
+  ----------------------------------------- */
+  meetingDate.valueAsDate = new Date();
+
+  for(let h=0; h<24; h++){
+    workStart.add(new Option(`${h}:00`, h));
+    workEnd.add(new Option(`${h}:00`, h));
+  }
+  workStart.value = 9;
+  workEnd.value = 18;
+
+  workStart.onchange = computeSlots;
+  workEnd.onchange = computeSlots;
+  meetingDate.onchange = computeSlots;
+
+  /* -----------------------------------------
+     PARTICIPANTS
+  ----------------------------------------- */
+  function addParticipant(tz){
+    const wrap = document.createElement('div');
+    wrap.style.display = 'flex';
+    wrap.style.gap = '8px';
+    wrap.style.marginBottom = '8px';
+
+    const sel = document.createElement('select');
+    sel.className = 'select';
+
+    TIMEZONES.forEach(z=>{
+      const o = document.createElement('option');
+      o.value = z;
+      o.textContent = z;
+      sel.appendChild(o);
+    });
+
+    sel.value = tz || 'UTC';
+    sel.onchange = computeSlots;
+
+    const rem = document.createElement('button');
+    rem.className = 'button';
+    rem.textContent = 'Remove';
+    rem.onclick = () => {
+      wrap.remove();
+      computeSlots();
+    };
+
+    wrap.appendChild(sel);
+    wrap.appendChild(rem);
+    participantsEl.appendChild(wrap);
+    computeSlots();
+  }
+
+  document.getElementById('addParticipant').onclick = () => addParticipant();
+
+  /* -----------------------------------------
+     COMPUTE SLOTS
+  ----------------------------------------- */
+  function computeSlots(){
+    const selects = [...participantsEl.querySelectorAll('select')];
+    if(!selects.length){
+      slotsEl.textContent = 'Add participants to see suggestions.';
+      copyBtn.style.display = 'none';
+      return;
+    }
+
+    const tzs = selects.map(s=>s.value);
+    const ws = Number(workStart.value);
+    const we = Number(workEnd.value);
+
+    const base = new Date(meetingDate.value);
+    const good = [];
+
+    for(let h=0; h<24; h++){
+      const ok = tzs.every(tz=>{
+        try{
+          const d = new Date(Date.UTC(
+            base.getUTCFullYear(),
+            base.getUTCMonth(),
+            base.getUTCDate(),
+            h,0,0
+          ));
+          const localHour = Number(
+            d.toLocaleString('en-US',{timeZone:tz,hour:'2-digit',hour12:false})
+          );
+          return localHour >= ws && localHour < we;
+        }catch{ return false; }
+      });
+      if(ok) good.push(h);
+    }
+
+    slotsEl.innerHTML = '';
+    if(!good.length){
+      slotsEl.innerHTML = '<div>No overlapping slots found.</div>';
+      copyBtn.style.display = 'none';
+      return;
+    }
+
+    good.slice(0,6).forEach(h=>{
+      const block = document.createElement('div');
+      block.style.borderTop='1px solid rgba(0,0,0,0.05)';
+      block.style.padding='8px 0';
+
+      tzs.forEach(tz=>{
+        const d = new Date(Date.UTC(
+          base.getUTCFullYear(),
+          base.getUTCMonth(),
+          base.getUTCDate(),
+          h,0,0
+        ));
+        const t = d.toLocaleString('en-US',{
+          timeZone:tz,
+          hour:'numeric',
+          minute:'2-digit',
+          hour12:false
+        });
+        const line = document.createElement('div');
+        line.textContent = `${tz} → ${t}`;
+        block.appendChild(line);
+      });
+
+      slotsEl.appendChild(block);
+    });
+
+    updateShareLink(tzs);
+    copyBtn.style.display = 'inline-block';
+  }
+
+  /* -----------------------------------------
+     SHARE LINK
+  ----------------------------------------- */
+  function updateShareLink(tzs){
+    const params = new URLSearchParams({
+      tz: tzs.join(','),
+      date: meetingDate.value,
+      ws: workStart.value,
+      we: workEnd.value
+    });
+    history.replaceState({},'',`?${params}`);
+  }
+
+  copyBtn.onclick = () => {
+    navigator.clipboard.writeText(location.href);
+    copyBtn.textContent = 'Link copied!';
+    setTimeout(()=>copyBtn.textContent='Copy Shareable Link',1200);
+  };
+
+  /* -----------------------------------------
+     LOAD FROM URL
+  ----------------------------------------- */
+  const params = new URLSearchParams(location.search);
+  const tzParam = params.get('tz');
+  if(tzParam){
+    participantsEl.innerHTML='';
+    tzParam.split(',').forEach(t=>addParticipant(t));
+    if(params.get('date')) meetingDate.value = params.get('date');
+    if(params.get('ws')) workStart.value = params.get('ws');
+    if(params.get('we')) workEnd.value = params.get('we');
+  } else {
+    addParticipant('Asia/Kolkata');
+    addParticipant('America/New_York');
+  }
+
+  </script>
+</body>
+</html>

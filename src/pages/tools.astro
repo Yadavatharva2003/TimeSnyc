@@ -1,0 +1,94 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ToolCard from '../components/ToolCard.astro';
+import AdSlot from '../components/AdSlot.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Time Tools & Timezone Utilities — TimeSync</title>
+
+    <meta
+      name="description"
+      content="Professional time tools for global teams — meeting planners, timezone converters, DST checkers, and current time references."
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/style.css" />
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#000000" />
+  </head>
+
+  <body>
+    <Header />
+
+    <main class="container">
+      <!-- INTRO -->
+      <section>
+        <h1>Time Tools That Actually Help</h1>
+        <p class="muted">
+          Built for remote teams, global work, and real-world scheduling.
+          No signup. No clutter.
+        </p>
+      </section>
+
+      <!-- CORE TOOLS -->
+      <section class="section">
+        <div class="tools-grid">
+
+          <ToolCard
+            title="Meeting Time Planner"
+            description="Plan meetings across countries, compare local times, and share a single link with everyone."
+            href="/meeting-planner"
+            badge="Recommended"
+          />
+
+          <ToolCard
+            title="Timezone Converter"
+            description="Convert times between countries and IANA timezones with DST-aware accuracy."
+            href="/timezone-converter"
+          />
+
+          <ToolCard
+            title="Time Difference & Work Hours"
+            description="See the current time difference and overlapping working hours between countries."
+            href="/time-difference"
+          />
+
+          <ToolCard
+            title="World Clock (Professional)"
+            description="Track multiple locations with DST indicators, working-hour highlights, and map view."
+            href="/world-clock"
+          />
+
+          <ToolCard
+            title="Daylight Saving Time Checker"
+            description="Check if DST is active, upcoming changes, and exact switch dates by country."
+            href="/dst-checker"
+          />
+
+          <ToolCard
+            title="Current Time by Country"
+            description="Authoritative current time pages for countries and major cities."
+            href="/current-time"
+          />
+
+        </div>
+      </section>
+
+      <!-- ADS -->
+      <div style="margin-top: 20px">
+        <AdSlot slot="3456789012" />
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>

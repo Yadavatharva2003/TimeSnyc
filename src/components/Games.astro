@@ -1,0 +1,118 @@
+---
+---
+<html:fragment>
+  <div id="games-modal" class="games-modal" aria-hidden="true" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(0,0,0,0.5)">
+    <div role="dialog" aria-label="Time games" style="width:min(980px,96%);max-height:90vh;overflow:auto;background:white;border-radius:12px;padding:16px;position:relative">
+      <button id="games-close" aria-label="Close games" style="position:absolute;right:12px;top:12px;background:none;border:none;font-size:18px;cursor:pointer">✕</button>
+      <h2 style="margin-top:0">Time games — quick fun</h2>
+      <p style="color:var(--muted)">Small mini-games related to time. They are offline and private to your browser.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+        <div style="padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.04)">
+          <h3>Reaction Tester</h3>
+          <p style="color:var(--muted)">Click as fast as you can when the box turns green.</p>
+          <div id="reaction-box" style="width:100%;height:120px;border-radius:8px;background:#e9e9e9;display:flex;align-items:center;justify-content:center;cursor:pointer">Wait...</div>
+          <div style="margin-top:8px">Last: <span id="reaction-last">—</span> ms • Best: <span id="reaction-best">—</span> ms</div>
+          <button id="reaction-reset" class="button" style="margin-top:8px">Reset</button>
+        </div>
+
+        <div style="padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.04)">
+          <h3>Beat the Clock</h3>
+          <p style="color:var(--muted)">Try to stop the timer as close to <strong>10.00</strong> seconds as possible.</p>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div id="btc-display" style="font-weight:700;font-size:20px">0.00s</div>
+            <button id="btc-start" class="button">Start</button>
+            <button id="btc-stop" class="button">Stop</button>
+            <button id="btc-reset" class="button">Reset</button>
+          </div>
+          <div style="margin-top:8px">Last error: <span id="btc-last">—</span> s</div>
+        </div>
+
+        <div style="padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.04);grid-column:1/3">
+          <h3>Time Trivia</h3>
+          <p style="color:var(--muted)">Multiple-choice quiz about timezones and clocks.</p>
+          <div id="trivia-question" style="font-weight:600">Question will appear here</div>
+          <div id="trivia-choices" style="margin-top:8px;display:flex;flex-direction:column;gap:6px"></div>
+          <div style="margin-top:8px;color:var(--muted)">Score: <span id="trivia-score">0</span></div>
+          <div style="margin-top:8px"><button id="trivia-next" class="button">Next</button></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .games-modal .button{cursor:pointer}
+    .games-modal .choice{padding:8px;border:1px solid rgba(0,0,0,0.04);border-radius:6px;background:#fff;cursor:pointer}
+    .games-modal .choice:hover{background:rgba(0,0,0,0.02)}
+  </style>
+
+  <script>
+    // Games logic
+    (function(){
+      const modal = document.getElementById('games-modal');
+      const closeBtn = document.getElementById('games-close');
+      closeBtn.addEventListener('click', ()=>{ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); });
+
+      // Reaction Tester
+      let state = 'idle'; // idle -> waiting -> ready -> clicked
+      let startTime = 0, timeoutId = null, best = null;
+      const box = document.getElementById('reaction-box');
+      const lastEl = document.getElementById('reaction-last');
+      const bestEl = document.getElementById('reaction-best');
+      const resetBtn = document.getElementById('reaction-reset');
+      function toWaiting(){
+        state='waiting'; box.textContent='Get ready...'; box.style.background='#f5f5f5'; timeoutId = setTimeout(()=>{ state='ready'; box.textContent='Click!'; box.style.background='#8fe28f'; startTime = performance.now(); }, 1000 + Math.random()*2000); }
+      box.addEventListener('click', ()=>{
+        if(state==='idle' || state==='clicked'){ toWaiting(); return; }
+        if(state==='waiting'){ // clicked too early
+          clearTimeout(timeoutId); state='idle'; box.textContent='Too early! Click to try again'; box.style.background='#ffd6d6'; lastEl.textContent='—'; return;
+        }
+        if(state==='ready'){ const t = performance.now() - startTime; lastEl.textContent = Math.round(t); if(best===null || t<best){ best = Math.round(t); bestEl.textContent = best; } state='clicked'; box.textContent='Nice! Click to try again'; box.style.background='#e9e9ff'; }
+      });
+      resetBtn.addEventListener('click', ()=>{ best=null; lastEl.textContent='—'; bestEl.textContent='—'; state='idle'; box.textContent='Wait...'; box.style.background='#e9e9e9'; clearTimeout(timeoutId); });
+
+      // Beat the Clock (target 10.00s)
+      const btcDisplay = document.getElementById('btc-display');
+      const btcStart = document.getElementById('btc-start');
+      const btcStop = document.getElementById('btc-stop');
+      const btcReset = document.getElementById('btc-reset');
+      const btcLast = document.getElementById('btc-last');
+      let btcStartTime=0, btcTimer=null, btcRunning=false;
+      function updateBtc(){
+        const v = (performance.now() - btcStartTime)/1000;
+        btcDisplay.textContent = v.toFixed(2) + 's';
+      }
+      btcStart.addEventListener('click', ()=>{ btcStartTime = performance.now(); btcRunning=true; btcTimer = setInterval(updateBtc, 30); });
+      btcStop.addEventListener('click', ()=>{ if(!btcRunning) return; clearInterval(btcTimer); btcRunning=false; const v = (performance.now() - btcStartTime)/1000; const err = Math.abs(v - 10).toFixed(2); btcLast.textContent = err; });
+      btcReset.addEventListener('click', ()=>{ clearInterval(btcTimer); btcRunning=false; btcDisplay.textContent='0.00s'; btcLast.textContent='—'; });
+
+      // Trivia (small set)
+      const questions = [
+        {q:'Which city uses the timezone Asia/Kolkata?', choices:['Mumbai','Karachi','Dhaka','Colombo'], a:0},
+        {q:'UTC stands for?', choices:['Universal Time Coordinated','Universal Time Code','Coordinated Universal Time','Universal Time Center'], a:2},
+        {q:'Which city is in America/Los_Angeles?', choices:['San Francisco','Chicago','New York','Houston'], a:0},
+        {q:'How many hours ahead is Tokyo (Asia/Tokyo) of UTC during standard time?', choices:['9','8','7','10'], a:0}
+      ];
+      let triviaIndex = 0, triviaScore = 0;
+      const qEl = document.getElementById('trivia-question');
+      const choicesEl = document.getElementById('trivia-choices');
+      const scoreEl = document.getElementById('trivia-score');
+      function renderTrivia(){
+        const cur = questions[triviaIndex % questions.length];
+        qEl.textContent = cur.q;
+        choicesEl.innerHTML='';
+        cur.choices.forEach((c,i)=>{
+          const b = document.createElement('div'); b.className='choice'; b.textContent = c;
+          b.addEventListener('click', ()=>{ if(i===cur.a){ triviaScore++; scoreEl.textContent = triviaScore; b.style.background='rgba(0,200,0,0.06)'; } else { b.style.background='rgba(200,0,0,0.06)'; } setTimeout(()=>{ triviaIndex++; renderTrivia(); }, 600); });
+          choicesEl.appendChild(b);
+        });
+      }
+      document.getElementById('trivia-next').addEventListener('click', ()=>{ triviaIndex++; renderTrivia(); });
+      renderTrivia();
+
+      // Expose open/close functions
+      window.__timesync_games = { open: ()=>{ modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); }, close: ()=>{ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); } };
+    })();
+  </script>
+</html:fragment>
