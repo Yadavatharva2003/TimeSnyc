@@ -1,0 +1,209 @@
+---
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const toc = [
+  { id: 'intro', label: 'Introduction' },
+  { id: 'what-is-dst', label: 'What Is Daylight Saving Time?' },
+  { id: 'why-exists', label: 'Why DST Exists' },
+  { id: 'who-uses', label: 'Which Countries Use DST' },
+  { id: 'common-problems', label: 'Common DST Problems' },
+  { id: 'how-to-check', label: 'How to Check DST Changes' },
+  { id: 'final', label: 'Final Thoughts' }
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Daylight Saving Time Explained: How to Check DST Changes by Country</title>
+    <meta
+      name="description"
+      content="A complete guide to daylight saving time. Learn what DST is, which countries use it, why it causes confusion, and how to check DST changes accurately."
+    />
+
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/style.css" />
+  </head>
+
+  <body>
+    <Header />
+
+    <main class="container blog-layout">
+      <!-- SIDEBAR / TOC -->
+      <aside class="blog-sidebar">
+        <div class="toc-card">
+          <h4>On this page</h4>
+          <ul>
+            {toc.map(i => (
+              <li><a href={`#${i.id}`}>{i.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+
+      <!-- ARTICLE -->
+      <article class="blog-article">
+        <h1>Daylight Saving Time Explained: How to Check DST Changes by Country</h1>
+        <p class="muted">
+          A clear, practical guide to understanding daylight saving time and
+          avoiding scheduling mistakes caused by clock changes.
+        </p>
+
+        <!-- INTRO -->
+        <section id="intro">
+          <p>
+            Daylight Saving Time (DST) is one of the most confusing aspects of
+            global timekeeping. Twice a year, millions of people adjust their
+            clocks—while millions of others do nothing at all.
+          </p>
+
+          <p>
+            For individuals, DST is often a minor inconvenience. For global
+            teams, remote workers, and businesses operating across countries,
+            DST can quietly break schedules, meetings, and automated systems.
+          </p>
+
+          <p>
+            This guide explains what DST is, why it exists, which countries use
+            it, and—most importantly—how to check DST changes accurately so you
+            never get caught off guard.
+          </p>
+        </section>
+
+        <!-- WHAT IS DST -->
+        <section id="what-is-dst">
+          <h2>What Is Daylight Saving Time?</h2>
+
+          <p>
+            Daylight Saving Time is the practice of moving clocks forward by one
+            hour during warmer months and moving them back in colder months.
+            The idea is to make better use of natural daylight in the evening.
+          </p>
+
+          <p>
+            When DST starts, clocks typically move forward by one hour. When it
+            ends, clocks move back by one hour. These changes usually happen at
+            night to minimize disruption.
+          </p>
+        </section>
+
+        <!-- WHY EXISTS -->
+        <section id="why-exists">
+          <h2>Why Does Daylight Saving Time Exist?</h2>
+
+          <p>
+            DST was originally introduced to reduce energy consumption and
+            maximize daylight hours for work and daily activities. By shifting
+            daylight to the evening, people could rely less on artificial
+            lighting.
+          </p>
+
+          <p>
+            While the effectiveness of DST is debated today, many countries
+            continue to use it due to historical precedent and regional
+            coordination.
+          </p>
+        </section>
+
+        <!-- WHO USES -->
+        <section id="who-uses">
+          <h2>Which Countries Use Daylight Saving Time?</h2>
+
+          <p>
+            Not all countries observe DST. Even among those that do, the start
+            and end dates vary widely.
+          </p>
+
+          <ul>
+            <li>Most of Europe uses DST (but switches on different dates)</li>
+            <li>The United States and Canada observe DST</li>
+            <li>Many Asian and African countries do not use DST</li>
+            <li>Some countries have abandoned DST entirely</li>
+          </ul>
+
+          <p>
+            This inconsistency is a major reason global time conversion becomes
+            complicated.
+          </p>
+        </section>
+
+        <!-- COMMON PROBLEMS -->
+        <section id="common-problems">
+          <h2>Common Problems Caused by DST</h2>
+
+          <p>
+            DST creates problems when people assume time differences are fixed.
+            A meeting that works perfectly one month may suddenly shift by an
+            hour after a DST change.
+          </p>
+
+          <ul>
+            <li>Meetings starting an hour late or early</li>
+            <li>Incorrect calendar invites</li>
+            <li>Automation and cron job failures</li>
+            <li>Missed deadlines and confusion</li>
+          </ul>
+
+          <p>
+            These issues are especially common when teams rely on manual
+            conversion or generic search results.
+          </p>
+        </section>
+
+        <!-- HOW TO CHECK -->
+        <section id="how-to-check">
+          <h2>How to Check Daylight Saving Time Changes Accurately</h2>
+
+          <p>
+            The safest way to handle DST is to use tools that are explicitly
+            DST-aware. These tools track regional rules and update automatically
+            when clock changes occur.
+          </p>
+
+          <p>
+            Use a dedicated
+            <a href="/timezone-converter/">Timezone Converter</a>
+            or a
+            <a href="/meeting-time-planner/">Meeting Time Planner</a>
+            that accounts for DST when comparing times between countries.
+          </p>
+
+          <p>
+            If you are scheduling meetings, you may also want to read our guide
+            on
+            <a href="/blog/how-to-plan-meetings-across-time-zones/">
+              planning meetings across time zones
+            </a>
+            to avoid common pitfalls.
+          </p>
+        </section>
+
+        <!-- FINAL -->
+        <section id="final">
+          <h2>Final Thoughts</h2>
+
+          <p>
+            Daylight Saving Time is one of the most common sources of time-related
+            confusion in global work. It is not intuitive, not universal, and
+            not consistent across countries.
+          </p>
+
+          <p>
+            By understanding how DST works and using DST-aware tools, you can
+            avoid mistakes, protect your schedule, and collaborate globally
+            with confidence.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>
