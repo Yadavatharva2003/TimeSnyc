@@ -1,5 +1,8 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: 'https://timesync.online',
+  site: "https://timesync.online",
+
+  integrations: [sitemap()],
 });
