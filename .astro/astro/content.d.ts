@@ -140,92 +140,14 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"posts": {
-"5-tips-for-time-management.md": {
-	id: "5-tips-for-time-management.md";
-  slug: "5-tips-for-time-management";
+		"posts": Record<string, {
+  id: string;
+  slug: string;
   body: string;
   collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"avoid-meeting-fatigue.md": {
-	id: "avoid-meeting-fatigue.md";
-  slug: "avoid-meeting-fatigue";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"best-time-management-apps-2025.md": {
-	id: "best-time-management-apps-2025.md";
-  slug: "best-time-management-apps-2025";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"calendar-hacks.md": {
-	id: "calendar-hacks.md";
-  slug: "calendar-hacks";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"countdown-uses.md": {
-	id: "countdown-uses.md";
-  slug: "countdown-uses";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"how-to-manage-timezones.md": {
-	id: "how-to-manage-timezones.md";
-  slug: "how-to-manage-timezones";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"productivity-sprints.md": {
-	id: "productivity-sprints.md";
-  slug: "productivity-sprints";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"psychology-of-punctuality.md": {
-	id: "psychology-of-punctuality.md";
-  slug: "psychology-of-punctuality";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"remote-meeting-etiquette.md": {
-	id: "remote-meeting-etiquette.md";
-  slug: "remote-meeting-etiquette";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"scheduling-with-us-clients.md": {
-	id: "scheduling-with-us-clients.md";
-  slug: "scheduling-with-us-clients";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"timezone-conversion-guide.md": {
-	id: "timezone-conversion-guide.md";
-  slug: "timezone-conversion-guide";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"timezone-ux-tips.md": {
-	id: "timezone-ux-tips.md";
-  slug: "timezone-ux-tips";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-};
+  data: any;
+  render(): Render[".md"];
+}>;
 
 	};
 
