@@ -1,0 +1,137 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AdSlot from '../components/AdSlot.astro';
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Time Difference & Work Hours — TimeSync</title>
+  <meta name="description" content="Compare time difference and working hour overlap between two time zones in real time." />
+  <link rel="stylesheet" href="/src/styles/style.css">
+</head>
+
+<body>
+  <Header />
+
+  <main class="container">
+
+   
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Time Difference & Work Hours</h1>
+      <p>Compare two time zones and instantly find the best overlap for work or meetings.</p>
+    </section>
+
+    <!-- CENTERED TOOL -->
+    <section
+      style="
+        display:flex;
+        justify-content:center;
+        margin-top:24px;
+      "
+    >
+      <div class="tool-box">
+
+        <!-- INPUTS -->
+        <div class="field">
+          <label style="min-width:110px">Timezone A</label>
+          <select class="select" id="tzA">
+            <option>Asia/Kolkata</option>
+            <option>Europe/London</option>
+            <option>America/New_York</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label style="min-width:110px">Timezone B</label>
+          <select class="select" id="tzB">
+            <option>Europe/London</option>
+            <option>Asia/Kolkata</option>
+            <option>America/New_York</option>
+          </select>
+        </div>
+
+        <!-- RESULT -->
+        <div class="result">
+          <h3 style="margin-top:0">Current Time</h3>
+
+          <div style="margin-bottom:12px">
+            <strong id="timeA"></strong><br />
+            <strong id="timeB"></strong>
+          </div>
+
+          <div
+            style="
+              background: var(--surface);
+              padding: 12px;
+              border-radius: 10px;
+              margin-bottom: 12px;
+            "
+          >
+            <strong>Working Hours Overlap</strong><br />
+            <span id="overlap"></span>
+          </div>
+
+          <div style="color:var(--muted);font-size:14px">
+            DST is applied automatically and updates in real time.
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div
+          style="
+            margin-top:18px;
+            padding:14px;
+            border-radius:12px;
+            background:linear-gradient(180deg,rgba(0,0,0,0.03),transparent);
+          "
+        >
+          <strong>Planning a meeting?</strong>
+          <p style="margin:6px 0 10px;color:var(--muted)">
+            Compare multiple participants and find the best shared time.
+          </p>
+          <a class="button" href="/meeting-planner">Open Meeting Planner →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BOTTOM AD -->
+    <div style="margin-top:32px">
+      <AdSlot slot="0987654321" />
+    </div>
+
+  </main>
+
+  <Footer />
+
+  <script type="module">
+    const tzA = document.getElementById('tzA');
+    const tzB = document.getElementById('tzB');
+    const timeA = document.getElementById('timeA');
+    const timeB = document.getElementById('timeB');
+    const overlap = document.getElementById('overlap');
+
+    function update() {
+      const now = new Date();
+
+      timeA.textContent =
+        `${tzA.value} — ${now.toLocaleTimeString([], { timeZone: tzA.value })}`;
+      timeB.textContent =
+        `${tzB.value} — ${now.toLocaleTimeString([], { timeZone: tzB.value })}`;
+
+      overlap.innerHTML =
+        `Best overlap typically around <strong>09:00 – 17:00</strong> local hours`;
+    }
+
+    tzA.onchange = tzB.onchange = update;
+    setInterval(update, 1000);
+    update();
+  </script>
+
+</body>
+</html>

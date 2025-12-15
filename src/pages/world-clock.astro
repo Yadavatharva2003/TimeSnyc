@@ -1,461 +1,404 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import AdSlot from '../components/AdSlot.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import AdSlot from "../components/AdSlot.astro";
 ---
-
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>World Clock — TimeSync</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>World Clock — TimeSync</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/src/styles/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="/src/styles/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
-    <style>
-      /* UI style matching your original design */
+  <style>
+    /* =========================
+       LAYOUT
+    ========================= */
+    .layout {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-      #map { width:100%; height:360px; border-radius:12px; }
+    .left-panel {
+      flex: 1;
+      min-width: 300px;
+    }
 
-      .left-col { min-width:320px; flex:1 }
-      .right-col { flex:2 }
+    .right-panel {
+      flex: 2;
+    }
 
-      .clocks-grid {
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-        gap:12px;
-      }
+    .clock-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
 
-      .clock-card {
-        padding:16px;
-        border-radius:12px;
-        background:#fff;
-        box-shadow:0 8px 24px rgba(0,0,0,0.08);
-        display:flex;
-        flex-direction:column;
-        gap:12px;
-        transition:0.2s;
-        cursor:pointer;
-      }
-      .clock-card:hover {
-        transform:translateY(-2px);
-        box-shadow:0 12px 32px rgba(0,0,0,0.12);
-      }
+    /* =========================
+       DRAG + ROW
+    ========================= */
+    .clock-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
 
-      .analog-clock {
-        width:80px; height:80px;
-        margin:0 auto;
-        position:relative;
-        border-radius:50%;
-        background:#f8f9fa;
-        border:3px solid #e9ecef;
-      }
-      .analog-clock .hour,
-      .analog-clock .minute,
-      .analog-clock .second {
-        position:absolute; left:50%; top:50%;
-        transform-origin:50% 75%;
-        border-radius:1px;
-      }
-      .analog-clock .hour { width:2px; height:25px; background:#495057; }
-      .analog-clock .minute { width:1.5px; height:35px; background:#6c757d; }
-      .analog-clock .second { width:1px; height:38px; background:#dc3545; }
+    .drag-handle {
+      width: 28px;
+      background: #f3f4f6;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      user-select: none;
+      color: #555;
+    }
 
-      .clock-time { font-size:20px; font-weight:700; text-align:center; }
-      .clock-meta { font-size:13px; color:#6b7280; text-align:center; }
-      .daylight-info { font-size:11px; text-align:center; color:#28a745; }
+    .drag-handle:active {
+      cursor: grabbing;
+    }
 
-      /* AUTOCOMPLETE */
-      .suggest-list {
-        display:none;
-        position:absolute;
-        left:0; right:0;
-        background:white;
-        border:1px solid #ddd;
-        border-radius:8px;
-        box-shadow:0 8px 24px rgba(0,0,0,0.1);
-        max-height:240px;
-        overflow-y:auto;
-        z-index:1000;
-      }
-      .suggest-item {
-        padding:8px 10px;
-        cursor:pointer;
-      }
-      .suggest-item:hover {
-        background:#f0f0f0;
-      }
+    /* =========================
+       TOOL CARD
+    ========================= */
+    .tool-card {
+      position: relative;
+      flex: 1;
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.06),
+        0 6px 16px rgba(0,0,0,0.06);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
 
-      /* TIMEZONE MODAL */
-      .tz-modal {
-        position:fixed;
-        top:0; left:0;
-        width:100%; height:100%;
-        background:rgba(0,0,0,0.45);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        z-index:9999;
-      }
-      .tz-box {
-        background:#fff;
-        padding:24px;
-        border-radius:12px;
-        max-width:420px;
-        width:90%;
-        box-shadow:0 8px 32px rgba(0,0,0,0.2);
-      }
-      .tz-title { font-size:20px; font-weight:700; margin-bottom:14px; }
-      .tz-option {
-        background:#f8f9fa;
-        padding:10px 14px;
-        border-radius:8px;
-        margin-bottom:8px;
-        cursor:pointer;
-        box-shadow:0 3px 8px rgba(0,0,0,0.05);
-      }
-      .tz-option:hover { background:#e9ecef; }
-    </style>
-  </head>
+    .tool-card:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 6px 20px rgba(0,0,0,0.08);
+    }
 
-  <body>
-    <Header />
+    .tool-card h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
 
-    <main class="container">
-      <section class="hero">
-        <h1>World Clock</h1>
-        <p>Search countries to add clocks. Supports multiple timezones per country.</p>
-      </section>
+    /* Delete */
+    .delete-clock {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      opacity: 0.6;
+    }
 
-      <section class="section">
-        <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
+    .delete-clock:hover {
+      opacity: 1;
+      color: #e11d48;
+    }
 
-          <!-- LEFT COLUMN -->
-          <div class="left-col">
+    /* =========================
+       ANALOG CLOCK
+    ========================= */
+    .analog-clock {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      border: 4px solid #222;
+      border-radius: 50%;
+      margin: 10px auto;
+      background: #fff;
+    }
 
-            <!-- PATCHED INPUT + AUTOCOMPLETE -->
-            <div style="position:relative; margin-bottom:10px;">
-              <input id="search" class="input" placeholder="Search country..." style="width:100%;" />
-              <div id="suggest" class="suggest-list"></div>
-            </div>
+    .hand {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform-origin: bottom center;
+      transform: translateX(-50%) rotate(0deg);
+      border-radius: 3px;
+    }
 
-            <div style="display:flex;gap:10px;margin-bottom:10px">
-              <button id="addBtn" class="button">Add Clock</button>
-              <button id="locateBtn" class="button">Use My Location</button>
-              <button id="clearBtn" class="button" style="background:#eaeaea;color:#111">Clear All</button>
-            </div>
+    .hand.hour { width: 6px; height: 32px; background: #222; }
+    .hand.minute { width: 4px; height: 44px; background: #444; }
+    .hand.second { width: 2px; height: 48px; background: #e11d48; }
 
-            <div style="margin-top:18px;">
-              <AdSlot slot="1234567890" />
-            </div>
+    .center-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #222;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* =========================
+       TEXT INFO
+    ========================= */
+    .clock-time {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .clock-meta {
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.65;
+    }
+
+    .daylight-info {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 6px;
+      font-size: 0.75rem;
+      opacity: 0.75;
+    }
+
+    /* =========================
+       SEARCH SUGGESTIONS
+    ========================= */
+    .suggest-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      z-index: 1000;
+    }
+
+    .ta-item {
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    .ta-item:hover {
+      background: #f3f4f6;
+    }
+  </style>
+</head>
+
+<body>
+  <Header />
+
+  <main class="container">
+    <section class="hero">
+      <h1>World Clock</h1>
+      <p>Track time across the world with precision.</p>
+    </section>
+
+    <section class="section">
+      <div class="layout">
+
+        <!-- LEFT PANEL -->
+        <div class="left-panel">
+          <div style="position:relative">
+            <input id="search" class="input" placeholder="Search country…" />
+            <div id="suggest" class="suggest-list" style="display:none"></div>
           </div>
 
-          <!-- RIGHT COLUMN -->
-          <div class="right-col">
-            <div id="clocks" class="clocks-grid"></div>
+          <div style="display:flex;gap:10px;margin-top:10px">
+            <button id="addBtn" class="button">Add Clock</button>
+            <button id="locateBtn" class="button">Use My Location</button>
+            <button id="clearBtn" class="button ghost">Clear</button>
           </div>
 
+          <!-- ADS (OUTSIDE TOOL CARDS) -->
+          <div style="margin-top:28px">
+            <AdSlot slot="1234567890" />
+          </div>
         </div>
-      </section>
 
-      <section class="section" style="margin-top:18px;">
-        <h2>Map</h2>
-        <div id="map"></div>
-      </section>
-    </main>
+        <!-- RIGHT PANEL -->
+        <div class="right-panel">
+          <div id="clocks" class="clock-grid"></div>
+        </div>
 
-    <Footer />
+      </div>
+    </section>
 
+    <section class="section">
+      <h2>Map</h2>
+      <div id="map" style="height:360px;border-radius:12px"></div>
+    </section>
+  </main>
 
-<script type="module">
-document.addEventListener("DOMContentLoaded", () => {
+  <Footer />
 
-  let rawCountries = [];
-  let countries = [];
-  let clocks = [];
-  let markers = [];
-  let map = null;
+  <script src="https://unpkg.com/suncalc@1.9.0/suncalc.js"></script>
 
-  const CLOCKS_KEY = "timesync_country_clocks_v3";
+  <script type="module">
+    import { getUserGeoTimezone } from "/scripts/geo-timezone.js";
 
-  const search = document.getElementById("search");
-  const suggest = document.getElementById("suggest");
-  const addBtn = document.getElementById("addBtn");
-  const locateBtn = document.getElementById("locateBtn");
-  const clearBtn = document.getElementById("clearBtn");
-  const clocksEl = document.getElementById("clocks");
+    document.addEventListener("DOMContentLoaded", async () => {
 
-  /* ---------------------------------------------------------
-     LOAD COUNTRIES FROM /public/data/countries.json
-  --------------------------------------------------------- */
-  async function loadCountries() {
-    if (countries.length) return countries;
+      let countries = [];
+      let clocks = [];
+      let map, markers = [];
+      let draggedId = null;
 
-    const res = await fetch("/data/countries.json");
-    rawCountries = await res.json();
+      const KEY = "timesync_world_clocks_final";
 
-    countries = rawCountries.map(c => ({
-      name: c.name.common,
-      lat: c.latlng?.[0] ?? 0,
-      lon: c.latlng?.[1] ?? 0,
-      timezones: c.timezones || []
-    }));
+      const clocksEl = document.getElementById("clocks");
+      const search = document.getElementById("search");
+      const suggest = document.getElementById("suggest");
+      const addBtn = document.getElementById("addBtn");
+      const locateBtn = document.getElementById("locateBtn");
+      const clearBtn = document.getElementById("clearBtn");
 
-    countries.sort((a, b) => a.name.localeCompare(b.name));
-    return countries;
-  }
+      async function loadCountries() {
+        if (countries.length) return;
+        const res = await fetch("/data/countries.json");
+        const raw = await res.json();
+        countries = raw
+          .filter(c => c.n && c.t?.length)
+          .map(c => ({
+            name: c.n,
+            lat: c.la,
+            lon: c.lo,
+            timezones: c.t
+          }))
+          .sort((a,b)=>a.name.localeCompare(b.name));
+      }
 
-  /* ---------------------------------------------------------
-     MAP INIT
-  --------------------------------------------------------- */
-  async function initMap() {
-    await new Promise(res => {
-      const s = document.createElement("script");
-      s.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-      s.onload = res;
-      document.body.appendChild(s);
-    });
-
-    map = L.map("map").setView([20, 0], 2);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
-  }
-
-  function addMarker(clock) {
-    if (!map) return;
-    const m = L.marker([clock.lat, clock.lon]).addTo(map);
-    m.bindPopup(`<strong>${clock.label}</strong><br>${clock.tz}`);
-    markers.push(m);
-  }
-
-  /* ---------------------------------------------------------
-     ADD CLOCK
-  --------------------------------------------------------- */
-  function addClock(obj) {
-    const id = "c" + Math.random().toString(36).slice(2);
-
-    const clock = {
-      id,
-      label: obj.name,
-      lat: obj.lat,
-      lon: obj.lon,
-      tz: obj.tz
-    };
-
-    clocks.unshift(clock);
-    save();
-    render();
-    addMarker(clock);
-  }
-
-  /* ---------------------------------------------------------
-     TIMEZONE SELECT MODAL
-  --------------------------------------------------------- */
-  function chooseTimezone(country) {
-    if (!country.timezones.length) return alert("No timezones found");
-
-    if (country.timezones.length === 1) {
-      addClock({
-        name: country.name,
-        lat: country.lat,
-        lon: country.lon,
-        tz: country.timezones[0]
-      });
-      return;
-    }
-
-    const modal = document.createElement("div");
-    modal.className = "tz-modal";
-
-    const box = document.createElement("div");
-    box.className = "tz-box";
-
-    const title = document.createElement("div");
-    title.className = "tz-title";
-    title.textContent = `${country.name} — Select Timezone`;
-    box.appendChild(title);
-
-    country.timezones.forEach(tz => {
-      const opt = document.createElement("div");
-      opt.className = "tz-option";
-      opt.textContent = tz;
-      opt.onclick = () => {
-        addClock({
-          name: country.name,
-          lat: country.lat,
-          lon: country.lon,
-          tz
+      async function initMap() {
+        await new Promise(r => {
+          const s = document.createElement("script");
+          s.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+          s.onload = r;
+          document.body.appendChild(s);
         });
-        modal.remove();
+        map = L.map("map").setView([20, 0], 2);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+      }
+
+      function render() {
+        clocksEl.innerHTML = "";
+
+        clocks.forEach(c => {
+          const row = document.createElement("div");
+          row.className = "clock-row";
+          row.id = c.id;
+
+          const handle = document.createElement("div");
+          handle.className = "drag-handle";
+          handle.textContent = "☰";
+          handle.draggable = true;
+
+          const card = document.createElement("div");
+          card.className = "tool-card";
+
+          card.innerHTML = `
+            <button class="delete-clock">✕</button>
+            <h3>${c.label}</h3>
+
+            <div class="analog-clock">
+              <div class="hand hour"></div>
+              <div class="hand minute"></div>
+              <div class="hand second"></div>
+              <div class="center-dot"></div>
+            </div>
+
+            <div class="clock-time"></div>
+            <div class="clock-meta">${c.tz}</div>
+
+            <div class="daylight-info">
+              🌅 <span class="sunrise"></span>
+              🌇 <span class="sunset"></span>
+            </div>
+          `;
+
+          card.querySelector(".delete-clock").onclick = () => {
+            clocks = clocks.filter(x => x.id !== c.id);
+            save();
+            render();
+          };
+
+          handle.addEventListener("dragstart", () => draggedId = c.id);
+          row.addEventListener("dragover", e => e.preventDefault());
+          row.addEventListener("drop", () => reorder(draggedId, c.id));
+
+          row.appendChild(handle);
+          row.appendChild(card);
+          clocksEl.appendChild(row);
+        });
+      }
+
+      function reorder(fromId, toId) {
+        if (!fromId || fromId === toId) return;
+        const a = clocks.findIndex(c => c.id === fromId);
+        const b = clocks.findIndex(c => c.id === toId);
+        const [m] = clocks.splice(a,1);
+        clocks.splice(b,0,m);
+        save();
+        render();
+      }
+
+      function updateClocks() {
+        const now = new Date();
+        clocks.forEach(c => {
+          const el = document.getElementById(c.id);
+          if (!el) return;
+
+          const local = new Date(now.toLocaleString("en-US", { timeZone: c.tz }));
+          const h = local.getHours() % 12;
+          const m = local.getMinutes();
+          const s = local.getSeconds();
+
+          el.querySelector(".clock-time").textContent = local.toTimeString().slice(0,8);
+          el.querySelector(".hand.hour").style.transform = `translateX(-50%) rotate(${h*30 + m*0.5}deg)`;
+          el.querySelector(".hand.minute").style.transform = `translateX(-50%) rotate(${m*6 + s*0.1}deg)`;
+          el.querySelector(".hand.second").style.transform = `translateX(-50%) rotate(${s*6}deg)`;
+
+          const t = SunCalc.getTimes(new Date(), c.lat, c.lon);
+          el.querySelector(".sunrise").textContent = t.sunrise?.toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"}) ?? "--";
+          el.querySelector(".sunset").textContent = t.sunset?.toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"}) ?? "--";
+        });
+      }
+
+      function save(){ localStorage.setItem(KEY, JSON.stringify(clocks)); }
+      function load(){ clocks = JSON.parse(localStorage.getItem(KEY) || "[]"); }
+
+      addBtn.onclick = async () => {
+        await loadCountries();
+        const q = search.value.toLowerCase();
+        const c = countries.find(x => x.name.toLowerCase().includes(q));
+        if (c) clocks.unshift({ id: crypto.randomUUID(), label:c.name, tz:c.timezones[0], lat:c.lat, lon:c.lon });
+        save(); render();
       };
-      box.appendChild(opt);
-    });
 
-    modal.appendChild(box);
-    document.body.appendChild(modal);
-  }
-
-  /* ---------------------------------------------------------
-     RENDER CLOCKS
-  --------------------------------------------------------- */
-  function render() {
-    clocksEl.innerHTML = "";
-
-    clocks.forEach(c => {
-      const card = document.createElement("div");
-      card.className = "clock-card";
-      card.id = c.id;
-
-      const label = document.createElement("div");
-      label.textContent = c.label;
-
-      const analog = document.createElement("div");
-      analog.className = "analog-clock";
-      analog.innerHTML = `
-        <div class="hour"></div>
-        <div class="minute"></div>
-        <div class="second"></div>
-      `;
-
-      const time = document.createElement("div");
-      time.className = "clock-time";
-
-      const meta = document.createElement("div");
-      meta.className = "clock-meta";
-      meta.textContent = c.tz;
-
-      const daylight = document.createElement("div");
-      daylight.className = "daylight-info";
-
-      card.onclick = () => map && map.flyTo([c.lat, c.lon], 4);
-
-      card.appendChild(label);
-      card.appendChild(analog);
-      card.appendChild(time);
-      card.appendChild(meta);
-      card.appendChild(daylight);
-
-      clocksEl.appendChild(card);
-    });
-  }
-
-  /* ---------------------------------------------------------
-     UPDATE CLOCKS + SUNRISE/SUNSET
-  --------------------------------------------------------- */
-  function updateClocks() {
-    const now = new Date();
-
-    clocks.forEach(c => {
-      const el = document.getElementById(c.id);
-      if (!el) return;
-
-      const localTime = new Date(now.toLocaleString("en-US", { timeZone: c.tz }));
-      el.querySelector(".clock-time").textContent =
-        localTime.toTimeString().substring(0, 8);
-
-      const sec = localTime.getSeconds();
-      const min = localTime.getMinutes();
-      const hr = localTime.getHours() % 12;
-
-      el.querySelector(".second").style.transform = `rotate(${sec * 6 - 90}deg)`;
-      el.querySelector(".minute").style.transform = `rotate(${min * 6 - 90}deg)`;
-      el.querySelector(".hour").style.transform = `rotate(${hr * 30 + min * 0.5 - 90}deg)`;
-
-      const times = SunCalc.getTimes(localTime, c.lat, c.lon);
-      const rise = times.sunrise?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) ?? "--";
-      const set = times.sunset?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) ?? "--";
-      el.querySelector(".daylight-info").textContent = `${rise} / ${set}`;
-    });
-  }
-
-  /* ---------------------------------------------------------
-     AUTOCOMPLETE
-  --------------------------------------------------------- */
-  search.oninput = async () => {
-    await loadCountries();
-    const q = search.value.toLowerCase();
-
-    if (!q) {
-      suggest.style.display = "none";
-      return;
-    }
-
-    const match = countries.filter(c => c.name.toLowerCase().includes(q)).slice(0, 10);
-
-    suggest.innerHTML = "";
-    match.forEach(c => {
-      const i = document.createElement("div");
-      i.className = "suggest-item";
-      i.textContent = c.name;
-      i.onclick = () => {
-        search.value = c.name;
-        chooseTimezone(c);
-        suggest.style.display = "none";
+      locateBtn.onclick = async () => {
+        const d = await getUserGeoTimezone();
+        clocks.unshift({ id: crypto.randomUUID(), label:"My Location", tz:d.timezone, lat:d.lat, lon:d.lon });
+        save(); render();
       };
-      suggest.appendChild(i);
+
+      clearBtn.onclick = () => {
+        clocks = [];
+        save();
+        render();
+      };
+
+      await loadCountries();
+      load();
+      await initMap();
+      render();
+      setInterval(updateClocks, 1000);
     });
-
-    suggest.style.display = "block";
-  };
-
-  /* ---------------------------------------------------------
-     BUTTON HANDLERS
-  --------------------------------------------------------- */
-  addBtn.onclick = async () => {
-    await loadCountries();
-    const q = search.value.toLowerCase();
-    const c = countries.find(x => x.name.toLowerCase() === q);
-    if (!c) return alert("Country not found");
-    chooseTimezone(c);
-  };
-
-  clearBtn.onclick = () => {
-    clocks = [];
-    save();
-    render();
-    markers.forEach(m => m.remove());
-  };
-
-  locateBtn.onclick = async () => {
-    if (!navigator.geolocation) return alert("No geolocation available");
-    const pos = await new Promise(r => 
-      navigator.geolocation.getCurrentPosition(r)
-    );
-
-    await loadCountries();
-    const lat = pos.coords.latitude;
-    const lon = pos.coords.longitude;
-
-    let best = null, bd = Infinity;
-    countries.forEach(c => {
-      const d = (c.lat - lat) ** 2 + (c.lon - lon) ** 2;
-      if (d < bd) { bd = d; best = c; }
-    });
-
-    chooseTimezone(best);
-  };
-
-  /* ---------------------------------------------------------
-     SAVE & LOAD
-  --------------------------------------------------------- */
-  function save() { localStorage.setItem(CLOCKS_KEY, JSON.stringify(clocks)); }
-  function load() { clocks = JSON.parse(localStorage.getItem(CLOCKS_KEY) || "[]" ); }
-
-  /* ---------------------------------------------------------
-     INIT
-  --------------------------------------------------------- */
-  (async () => {
-    await loadCountries();
-    load();
-    await initMap();
-    render();
-    clocks.forEach(addMarker);
-    setInterval(updateClocks, 1000);
-  })();
-
-});
-</script>
-
-  </body>
+  </script>
+</body>
 </html>

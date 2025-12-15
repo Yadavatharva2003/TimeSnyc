@@ -1,10 +1,5 @@
-// public/scripts/timezones.js
-// Provides a full-ish IANA timezone list, registers it on window, and
-// optionally populates a <select id="timezone-select"> and wires
-// <input id="timezone-search"> for live filtering/search.
-// Loaded as a module (export available) and also attaches to window for legacy use.
+// src/scripts/timezone.js
 
-/* exported TIMEZONES, populateTimezoneSelect, findTimezones */
 export const TIMEZONES = [
   "Etc/GMT+12",
   "Pacific/Midway",
@@ -201,103 +196,64 @@ export const TIMEZONES = [
   "America/Indiana/Vincennes",
 ];
 
-// also attach to window for simple access
+// optional global access (SAFE)
 if (typeof window !== "undefined") {
   window.TIMEZONES = TIMEZONES;
 }
 
 /**
- * findTimezones(query)
- * - fuzzy-ish case-insensitive match against timezone id and human parts.
- * - returns up to `limit` results.
+ * Simple fuzzy search
  */
 export function findTimezones(query, { limit = 40 } = {}) {
-  if (!query || typeof query !== "string") return TIMEZONES.slice(0, limit);
-  const q = query.trim().toLowerCase();
-  const results = [];
-  for (const tz of TIMEZONES) {
-    const id = tz.toLowerCase();
-    if (
-      id.includes(q) ||
+  if (!query) return TIMEZONES.slice(0, limit);
+
+  const q = query.toLowerCase();
+  return TIMEZONES.filter(
+    (tz) =>
+      tz.toLowerCase().includes(q) ||
       tz.split("/").some((p) => p.toLowerCase().includes(q))
-    ) {
-      results.push(tz);
-      if (results.length >= limit) break;
-    }
-  }
-  return results;
+  ).slice(0, limit);
 }
 
 /**
- * populateTimezoneSelect({ selectId = 'timezone-select', searchId = 'timezone-search' })
- * - If a <select id="timezone-select"> exists, populate it with options.
- * - If a <input id="timezone-search"> exists, wire live filtering (debounced).
- * - Returns an object { select, search, cleanup }.
+ * populateTimezoneSelect
+ * Explicit wiring ONLY — no DOM guessing
  */
-export function populateTimezoneSelect({
-  selectId = "timezone-select",
-  searchId = "timezone-search",
-  limit = 200,
-} = {}) {
+export function populateTimezoneSelect({ selectId, searchId, limit = 200 }) {
   const select = document.getElementById(selectId);
   const search = document.getElementById(searchId);
 
-  if (!select && !search)
-    return { select: null, search: null, cleanup: () => {} };
+  if (!select) {
+    console.warn(`[timezone] select #${selectId} not found`);
+    return { select: null, search: null };
+  }
 
-  // helper to render options
   function render(list) {
-    if (!select) return;
-    const cur = select.value;
+    const current = select.value;
     select.innerHTML = "";
-    for (const tz of list) {
+    list.forEach((tz) => {
       const opt = document.createElement("option");
       opt.value = tz;
       opt.textContent = tz.replace("_", " ");
       select.appendChild(opt);
-    }
-    if (list.includes(cur)) select.value = cur;
+    });
+    if (list.includes(current)) select.value = current;
   }
 
-  // initial render
+  // initial
   render(TIMEZONES.slice(0, limit));
 
-  // live search debounced
-  let to = null;
-  function onSearch() {
-    if (!search) return;
-    const v = search.value.trim();
-    clearTimeout(to);
-    to = setTimeout(() => {
-      const list = v ? findTimezones(v, { limit }) : TIMEZONES.slice(0, limit);
-      render(list);
-    }, 160);
-  }
-
+  // search handling
   if (search) {
-    search.addEventListener("input", onSearch);
+    let timer = null;
+    search.addEventListener("input", () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const list = findTimezones(search.value, { limit });
+        render(list);
+      }, 120);
+    });
   }
 
-  // return cleanup function
-  return {
-    select,
-    search,
-    cleanup() {
-      if (search) search.removeEventListener("input", onSearch);
-      clearTimeout(to);
-    },
-  };
-}
-
-// Auto-initialize if the page includes the expected elements.
-// Useful for Meeting Finder pages that simply include <select id="timezone-select"> and <input id="timezone-search">
-if (typeof document !== "undefined") {
-  window.addEventListener("DOMContentLoaded", () => {
-    try {
-      populateTimezoneSelect();
-    } catch (e) {
-      // ignore
-      // console.warn('timezone init failed', e);
-    }
-  });
+  return { select, search };
 }

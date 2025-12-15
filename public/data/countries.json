@@ -1,0 +1,2395 @@
+[
+  {
+    "c": "AF",
+    "n": "Afghanistan",
+    "t": [
+      "Asia/Kabul"
+    ],
+    "la": 33.9391,
+    "lo": 67.71
+  },
+  {
+    "c": "AL",
+    "n": "Albania",
+    "t": [
+      "Europe/Tirane"
+    ],
+    "la": 41.1533,
+    "lo": 20.1683
+  },
+  {
+    "c": "DZ",
+    "n": "Algeria",
+    "t": [
+      "Africa/Algiers"
+    ],
+    "la": 28.0339,
+    "lo": 1.6596
+  },
+  {
+    "c": "AS",
+    "n": "American Samoa",
+    "t": [
+      "Pacific/Pago_Pago"
+    ],
+    "la": -14.271,
+    "lo": -170.1322
+  },
+  {
+    "c": "AD",
+    "n": "Andorra",
+    "t": [
+      "Europe/Andorra"
+    ],
+    "la": 42.5462,
+    "lo": 1.6016
+  },
+  {
+    "c": "AO",
+    "n": "Angola",
+    "t": [
+      "Africa/Luanda"
+    ],
+    "la": -11.2027,
+    "lo": 17.8739
+  },
+  {
+    "c": "AI",
+    "n": "Anguilla",
+    "t": [
+      "America/Anguilla"
+    ],
+    "la": 18.2206,
+    "lo": -63.0686
+  },
+  {
+    "c": "AQ",
+    "n": "Antarctica",
+    "t": [
+      "Antarctica/Casey",
+      "Antarctica/Davis",
+      "Antarctica/DumontDUrville",
+      "Antarctica/Mawson",
+      "Antarctica/McMurdo",
+      "Antarctica/Palmer",
+      "Antarctica/Rothera",
+      "Antarctica/Syowa",
+      "Antarctica/Troll",
+      "Antarctica/Vostok"
+    ],
+    "la": -82.8628,
+    "lo": 135.0
+  },
+  {
+    "c": "AG",
+    "n": "Antigua and Barbuda",
+    "t": [
+      "America/Antigua"
+    ],
+    "la": 17.0608,
+    "lo": -61.7964
+  },
+  {
+    "c": "AR",
+    "n": "Argentina",
+    "t": [
+      "America/Argentina/Buenos_Aires",
+      "America/Argentina/Catamarca",
+      "America/Argentina/Cordoba",
+      "America/Argentina/Jujuy",
+      "America/Argentina/La_Rioja",
+      "America/Argentina/Mendoza",
+      "America/Argentina/Rio_Gallegos",
+      "America/Argentina/Salta",
+      "America/Argentina/San_Juan",
+      "America/Argentina/San_Luis",
+      "America/Argentina/Tucuman",
+      "America/Argentina/Ushuaia"
+    ],
+    "la": -38.4161,
+    "lo": -63.6167
+  },
+  {
+    "c": "AM",
+    "n": "Armenia",
+    "t": [
+      "Asia/Yerevan"
+    ],
+    "la": 40.0691,
+    "lo": 45.0382
+  },
+  {
+    "c": "AW",
+    "n": "Aruba",
+    "t": [
+      "America/Aruba"
+    ],
+    "la": 12.5211,
+    "lo": -69.9683
+  },
+  {
+    "c": "AU",
+    "n": "Australia",
+    "t": [
+      "Antarctica/Macquarie",
+      "Australia/Adelaide",
+      "Australia/Brisbane",
+      "Australia/Broken_Hill",
+      "Australia/Darwin",
+      "Australia/Eucla",
+      "Australia/Hobart",
+      "Australia/Lindeman",
+      "Australia/Lord_Howe",
+      "Australia/Melbourne",
+      "Australia/Perth",
+      "Australia/Sydney"
+    ],
+    "la": -25.2744,
+    "lo": 133.7751
+  },
+  {
+    "c": "AT",
+    "n": "Austria",
+    "t": [
+      "Europe/Vienna"
+    ],
+    "la": 47.5162,
+    "lo": 14.5501
+  },
+  {
+    "c": "AZ",
+    "n": "Azerbaijan",
+    "t": [
+      "Asia/Baku"
+    ],
+    "la": 40.1431,
+    "lo": 47.5769
+  },
+  {
+    "c": "BS",
+    "n": "Bahamas",
+    "t": [
+      "America/Nassau"
+    ],
+    "la": 25.0343,
+    "lo": -77.3963
+  },
+  {
+    "c": "BH",
+    "n": "Bahrain",
+    "t": [
+      "Asia/Bahrain"
+    ],
+    "la": 26.0667,
+    "lo": 50.5577
+  },
+  {
+    "c": "BD",
+    "n": "Bangladesh",
+    "t": [
+      "Asia/Dhaka"
+    ],
+    "la": 23.685,
+    "lo": 90.3563
+  },
+  {
+    "c": "BB",
+    "n": "Barbados",
+    "t": [
+      "America/Barbados"
+    ],
+    "la": 13.1939,
+    "lo": -59.5432
+  },
+  {
+    "c": "BY",
+    "n": "Belarus",
+    "t": [
+      "Europe/Minsk"
+    ],
+    "la": 53.7098,
+    "lo": 27.9534
+  },
+  {
+    "c": "BE",
+    "n": "Belgium",
+    "t": [
+      "Europe/Brussels"
+    ],
+    "la": 50.5039,
+    "lo": 4.4699
+  },
+  {
+    "c": "BZ",
+    "n": "Belize",
+    "t": [
+      "America/Belize"
+    ],
+    "la": 17.1899,
+    "lo": -88.4976
+  },
+  {
+    "c": "BJ",
+    "n": "Benin",
+    "t": [
+      "Africa/Porto-Novo"
+    ],
+    "la": 9.3077,
+    "lo": 2.3158
+  },
+  {
+    "c": "BM",
+    "n": "Bermuda",
+    "t": [
+      "Atlantic/Bermuda"
+    ],
+    "la": 32.3214,
+    "lo": -64.7574
+  },
+  {
+    "c": "BT",
+    "n": "Bhutan",
+    "t": [
+      "Asia/Thimphu"
+    ],
+    "la": 27.5142,
+    "lo": 90.4336
+  },
+  {
+    "c": "BO",
+    "n": "Bolivia, Plurinational State of",
+    "t": [
+      "America/La_Paz"
+    ],
+    "la": -16.2902,
+    "lo": -63.5887
+  },
+  {
+    "c": "BQ",
+    "n": "Bonaire, Sint Eustatius and Saba",
+    "t": [
+      "America/Kralendijk"
+    ],
+    "la": 12.1784,
+    "lo": -68.2385
+  },
+  {
+    "c": "BA",
+    "n": "Bosnia and Herzegovina",
+    "t": [
+      "Europe/Sarajevo"
+    ],
+    "la": 43.9159,
+    "lo": 17.6791
+  },
+  {
+    "c": "BW",
+    "n": "Botswana",
+    "t": [
+      "Africa/Gaborone"
+    ],
+    "la": -22.3285,
+    "lo": 24.6849
+  },
+  {
+    "c": "BR",
+    "n": "Brazil",
+    "t": [
+      "America/Araguaina",
+      "America/Bahia",
+      "America/Belem",
+      "America/Boa_Vista",
+      "America/Campo_Grande",
+      "America/Cuiaba",
+      "America/Eirunepe",
+      "America/Fortaleza",
+      "America/Maceio",
+      "America/Manaus",
+      "America/Noronha",
+      "America/Porto_Velho",
+      "America/Recife",
+      "America/Rio_Branco",
+      "America/Santarem",
+      "America/Sao_Paulo"
+    ],
+    "la": -14.235,
+    "lo": -51.9253
+  },
+  {
+    "c": "IO",
+    "n": "British Indian Ocean Territory",
+    "t": [
+      "Indian/Chagos"
+    ],
+    "la": -7.334,
+    "lo": 72.4243
+  },
+  {
+    "c": "BN",
+    "n": "Brunei Darussalam",
+    "t": [
+      "Asia/Brunei"
+    ],
+    "la": 4.5353,
+    "lo": 114.7277
+  },
+  {
+    "c": "BG",
+    "n": "Bulgaria",
+    "t": [
+      "Europe/Sofia"
+    ],
+    "la": 42.7339,
+    "lo": 25.4858
+  },
+  {
+    "c": "BF",
+    "n": "Burkina Faso",
+    "t": [
+      "Africa/Ouagadougou"
+    ],
+    "la": 12.2383,
+    "lo": -1.5616
+  },
+  {
+    "c": "BI",
+    "n": "Burundi",
+    "t": [
+      "Africa/Bujumbura"
+    ],
+    "la": -3.3731,
+    "lo": 29.9189
+  },
+  {
+    "c": "KH",
+    "n": "Cambodia",
+    "t": [
+      "Asia/Phnom_Penh"
+    ],
+    "la": 12.5657,
+    "lo": 104.991
+  },
+  {
+    "c": "CM",
+    "n": "Cameroon",
+    "t": [
+      "Africa/Douala"
+    ],
+    "la": 7.3697,
+    "lo": 12.3547
+  },
+  {
+    "c": "CA",
+    "n": "Canada",
+    "t": [
+      "America/Atikokan",
+      "America/Blanc-Sablon",
+      "America/Cambridge_Bay",
+      "America/Creston",
+      "America/Dawson",
+      "America/Dawson_Creek",
+      "America/Edmonton",
+      "America/Fort_Nelson",
+      "America/Glace_Bay",
+      "America/Goose_Bay",
+      "America/Halifax",
+      "America/Inuvik",
+      "America/Iqaluit",
+      "America/Moncton",
+      "America/Rankin_Inlet",
+      "America/Regina",
+      "America/Resolute",
+      "America/St_Johns",
+      "America/Swift_Current",
+      "America/Toronto",
+      "America/Vancouver",
+      "America/Whitehorse",
+      "America/Winnipeg"
+    ],
+    "la": 56.1304,
+    "lo": -106.3468
+  },
+  {
+    "c": "CV",
+    "n": "Cape Verde",
+    "t": [
+      "Atlantic/Cape_Verde"
+    ],
+    "la": 16.5388,
+    "lo": -23.0418
+  },
+  {
+    "c": "KY",
+    "n": "Cayman Islands",
+    "t": [
+      "America/Cayman"
+    ],
+    "la": 19.5135,
+    "lo": -80.5669
+  },
+  {
+    "c": "CF",
+    "n": "Central African Republic",
+    "t": [
+      "Africa/Bangui"
+    ],
+    "la": 6.6111,
+    "lo": 20.9394
+  },
+  {
+    "c": "TD",
+    "n": "Chad",
+    "t": [
+      "Africa/Ndjamena"
+    ],
+    "la": 15.4542,
+    "lo": 18.7322
+  },
+  {
+    "c": "CL",
+    "n": "Chile",
+    "t": [
+      "America/Coyhaique",
+      "America/Punta_Arenas",
+      "America/Santiago",
+      "Pacific/Easter"
+    ],
+    "la": -35.6751,
+    "lo": -71.543
+  },
+  {
+    "c": "CN",
+    "n": "China",
+    "t": [
+      "Asia/Shanghai",
+      "Asia/Urumqi"
+    ],
+    "la": 35.8617,
+    "lo": 104.1954
+  },
+  {
+    "c": "CX",
+    "n": "Christmas Island",
+    "t": [
+      "Indian/Christmas"
+    ],
+    "la": -10.4475,
+    "lo": 105.6904
+  },
+  {
+    "c": "CC",
+    "n": "Cocos (Keeling) Islands",
+    "t": [
+      "Indian/Cocos"
+    ],
+    "la": -12.1642,
+    "lo": 96.871
+  },
+  {
+    "c": "CO",
+    "n": "Colombia",
+    "t": [
+      "America/Bogota"
+    ],
+    "la": 4.5709,
+    "lo": -74.2973
+  },
+  {
+    "c": "KM",
+    "n": "Comoros",
+    "t": [
+      "Indian/Comoro"
+    ],
+    "la": -11.875,
+    "lo": 43.8722
+  },
+  {
+    "c": "CG",
+    "n": "Congo",
+    "t": [
+      "Africa/Brazzaville"
+    ],
+    "la": -0.228,
+    "lo": 15.8277
+  },
+  {
+    "c": "CD",
+    "n": "Congo, the Democratic Republic of the",
+    "t": [
+      "Africa/Kinshasa",
+      "Africa/Lubumbashi"
+    ],
+    "la": -4.0383,
+    "lo": 21.7587
+  },
+  {
+    "c": "CK",
+    "n": "Cook Islands",
+    "t": [
+      "Pacific/Rarotonga"
+    ],
+    "la": -21.2367,
+    "lo": -159.7777
+  },
+  {
+    "c": "CR",
+    "n": "Costa Rica",
+    "t": [
+      "America/Costa_Rica"
+    ],
+    "la": 9.7489,
+    "lo": -83.7534
+  },
+  {
+    "c": "HR",
+    "n": "Croatia",
+    "t": [
+      "Europe/Zagreb"
+    ],
+    "la": 45.1,
+    "lo": 15.2
+  },
+  {
+    "c": "CU",
+    "n": "Cuba",
+    "t": [
+      "America/Havana"
+    ],
+    "la": 21.5218,
+    "lo": -77.7812
+  },
+  {
+    "c": "CW",
+    "n": "Curaçao",
+    "t": [
+      "America/Curacao"
+    ],
+    "la": 12.1696,
+    "lo": -68.99
+  },
+  {
+    "c": "CY",
+    "n": "Cyprus",
+    "t": [
+      "Asia/Famagusta",
+      "Asia/Nicosia"
+    ],
+    "la": 35.1264,
+    "lo": 33.4299
+  },
+  {
+    "c": "CZ",
+    "n": "Czech Republic",
+    "t": [
+      "Europe/Prague"
+    ],
+    "la": 49.8175,
+    "lo": 15.473
+  },
+  {
+    "c": "CI",
+    "n": "Côte d'Ivoire",
+    "t": [
+      "Africa/Abidjan"
+    ],
+    "la": 7.54,
+    "lo": -5.5471
+  },
+  {
+    "c": "DK",
+    "n": "Denmark",
+    "t": [
+      "Europe/Copenhagen"
+    ],
+    "la": 56.2639,
+    "lo": 9.5018
+  },
+  {
+    "c": "DJ",
+    "n": "Djibouti",
+    "t": [
+      "Africa/Djibouti"
+    ],
+    "la": 11.8251,
+    "lo": 42.5903
+  },
+  {
+    "c": "DM",
+    "n": "Dominica",
+    "t": [
+      "America/Dominica"
+    ],
+    "la": 15.415,
+    "lo": -61.371
+  },
+  {
+    "c": "DO",
+    "n": "Dominican Republic",
+    "t": [
+      "America/Santo_Domingo"
+    ],
+    "la": 18.7357,
+    "lo": -70.1627
+  },
+  {
+    "c": "EC",
+    "n": "Ecuador",
+    "t": [
+      "America/Guayaquil",
+      "Pacific/Galapagos"
+    ],
+    "la": -1.8312,
+    "lo": -78.1834
+  },
+  {
+    "c": "EG",
+    "n": "Egypt",
+    "t": [
+      "Africa/Cairo"
+    ],
+    "la": 26.8206,
+    "lo": 30.8025
+  },
+  {
+    "c": "SV",
+    "n": "El Salvador",
+    "t": [
+      "America/El_Salvador"
+    ],
+    "la": 13.7942,
+    "lo": -88.8965
+  },
+  {
+    "c": "GQ",
+    "n": "Equatorial Guinea",
+    "t": [
+      "Africa/Malabo"
+    ],
+    "la": 1.6508,
+    "lo": 10.2679
+  },
+  {
+    "c": "ER",
+    "n": "Eritrea",
+    "t": [
+      "Africa/Asmara"
+    ],
+    "la": 15.1794,
+    "lo": 39.7823
+  },
+  {
+    "c": "EE",
+    "n": "Estonia",
+    "t": [
+      "Europe/Tallinn"
+    ],
+    "la": 58.5953,
+    "lo": 25.0136
+  },
+  {
+    "c": "ET",
+    "n": "Ethiopia",
+    "t": [
+      "Africa/Addis_Ababa"
+    ],
+    "la": 9.145,
+    "lo": 40.4897
+  },
+  {
+    "c": "FK",
+    "n": "Falkland Islands (Malvinas)",
+    "t": [
+      "Atlantic/Stanley"
+    ],
+    "la": -51.7963,
+    "lo": -59.5236
+  },
+  {
+    "c": "FO",
+    "n": "Faroe Islands",
+    "t": [
+      "Atlantic/Faroe"
+    ],
+    "la": 61.8926,
+    "lo": -6.9118
+  },
+  {
+    "c": "FJ",
+    "n": "Fiji",
+    "t": [
+      "Pacific/Fiji"
+    ],
+    "la": -16.5782,
+    "lo": 179.4144
+  },
+  {
+    "c": "FI",
+    "n": "Finland",
+    "t": [
+      "Europe/Helsinki"
+    ],
+    "la": 61.9241,
+    "lo": 25.7482
+  },
+  {
+    "c": "FR",
+    "n": "France",
+    "t": [
+      "Europe/Paris"
+    ],
+    "la": 46.2276,
+    "lo": 2.2137
+  },
+  {
+    "c": "GF",
+    "n": "French Guiana",
+    "t": [
+      "America/Cayenne"
+    ],
+    "la": 3.9339,
+    "lo": -53.1258
+  },
+  {
+    "c": "PF",
+    "n": "French Polynesia",
+    "t": [
+      "Pacific/Gambier",
+      "Pacific/Marquesas",
+      "Pacific/Tahiti"
+    ],
+    "la": -17.6797,
+    "lo": -149.4068
+  },
+  {
+    "c": "TF",
+    "n": "French Southern Territories",
+    "t": [
+      "Indian/Kerguelen"
+    ],
+    "la": -49.2804,
+    "lo": 69.3486
+  },
+  {
+    "c": "GA",
+    "n": "Gabon",
+    "t": [
+      "Africa/Libreville"
+    ],
+    "la": -0.8037,
+    "lo": 11.6094
+  },
+  {
+    "c": "GM",
+    "n": "Gambia",
+    "t": [
+      "Africa/Banjul"
+    ],
+    "la": 13.4432,
+    "lo": -15.3101
+  },
+  {
+    "c": "GE",
+    "n": "Georgia",
+    "t": [
+      "Asia/Tbilisi"
+    ],
+    "la": 42.3154,
+    "lo": 43.3569
+  },
+  {
+    "c": "DE",
+    "n": "Germany",
+    "t": [
+      "Europe/Berlin",
+      "Europe/Busingen"
+    ],
+    "la": 51.1657,
+    "lo": 10.4515
+  },
+  {
+    "c": "GH",
+    "n": "Ghana",
+    "t": [
+      "Africa/Accra"
+    ],
+    "la": 7.9465,
+    "lo": -1.0232
+  },
+  {
+    "c": "GI",
+    "n": "Gibraltar",
+    "t": [
+      "Europe/Gibraltar"
+    ],
+    "la": 36.1377,
+    "lo": -5.3453
+  },
+  {
+    "c": "GR",
+    "n": "Greece",
+    "t": [
+      "Europe/Athens"
+    ],
+    "la": 39.0742,
+    "lo": 21.8243
+  },
+  {
+    "c": "GL",
+    "n": "Greenland",
+    "t": [
+      "America/Danmarkshavn",
+      "America/Nuuk",
+      "America/Scoresbysund",
+      "America/Thule"
+    ],
+    "la": 71.7069,
+    "lo": -42.6043
+  },
+  {
+    "c": "GD",
+    "n": "Grenada",
+    "t": [
+      "America/Grenada"
+    ],
+    "la": 12.2628,
+    "lo": -61.6042
+  },
+  {
+    "c": "GP",
+    "n": "Guadeloupe",
+    "t": [
+      "America/Guadeloupe"
+    ],
+    "la": 16.265,
+    "lo": -61.551
+  },
+  {
+    "c": "GU",
+    "n": "Guam",
+    "t": [
+      "Pacific/Guam"
+    ],
+    "la": 13.4443,
+    "lo": 144.7937
+  },
+  {
+    "c": "GT",
+    "n": "Guatemala",
+    "t": [
+      "America/Guatemala"
+    ],
+    "la": 15.7835,
+    "lo": -90.2308
+  },
+  {
+    "c": "GG",
+    "n": "Guernsey",
+    "t": [
+      "Europe/Guernsey"
+    ],
+    "la": 49.4657,
+    "lo": -2.5853
+  },
+  {
+    "c": "GN",
+    "n": "Guinea",
+    "t": [
+      "Africa/Conakry"
+    ],
+    "la": 9.9456,
+    "lo": -9.6966
+  },
+  {
+    "c": "GW",
+    "n": "Guinea-Bissau",
+    "t": [
+      "Africa/Bissau"
+    ],
+    "la": 11.8037,
+    "lo": -15.1804
+  },
+  {
+    "c": "GY",
+    "n": "Guyana",
+    "t": [
+      "America/Guyana"
+    ],
+    "la": 4.8604,
+    "lo": -58.9302
+  },
+  {
+    "c": "HT",
+    "n": "Haiti",
+    "t": [
+      "America/Port-au-Prince"
+    ],
+    "la": 18.9712,
+    "lo": -72.2852
+  },
+  {
+    "c": "VA",
+    "n": "Holy See (Vatican City State)",
+    "t": [
+      "Europe/Vatican"
+    ],
+    "la": 41.9029,
+    "lo": 12.4534
+  },
+  {
+    "c": "HN",
+    "n": "Honduras",
+    "t": [
+      "America/Tegucigalpa"
+    ],
+    "la": 15.2,
+    "lo": -86.2419
+  },
+  {
+    "c": "HK",
+    "n": "Hong Kong",
+    "t": [
+      "Asia/Hong_Kong"
+    ],
+    "la": 22.3193,
+    "lo": 114.1694
+  },
+  {
+    "c": "HU",
+    "n": "Hungary",
+    "t": [
+      "Europe/Budapest"
+    ],
+    "la": 47.1625,
+    "lo": 19.5033
+  },
+  {
+    "c": "IS",
+    "n": "Iceland",
+    "t": [
+      "Atlantic/Reykjavik"
+    ],
+    "la": 64.9631,
+    "lo": -19.0208
+  },
+  {
+    "c": "IN",
+    "n": "India",
+    "t": [
+      "Asia/Kolkata"
+    ],
+    "la": 20.5937,
+    "lo": 78.9629
+  },
+  {
+    "c": "ID",
+    "n": "Indonesia",
+    "t": [
+      "Asia/Jakarta",
+      "Asia/Jayapura",
+      "Asia/Makassar",
+      "Asia/Pontianak"
+    ],
+    "la": -0.7893,
+    "lo": 113.9213
+  },
+  {
+    "c": "IR",
+    "n": "Iran, Islamic Republic of",
+    "t": [
+      "Asia/Tehran"
+    ],
+    "la": 32.4279,
+    "lo": 53.688
+  },
+  {
+    "c": "IQ",
+    "n": "Iraq",
+    "t": [
+      "Asia/Baghdad"
+    ],
+    "la": 33.2232,
+    "lo": 43.6793
+  },
+  {
+    "c": "IE",
+    "n": "Ireland",
+    "t": [
+      "Europe/Dublin"
+    ],
+    "la": 53.4129,
+    "lo": -8.2439
+  },
+  {
+    "c": "IM",
+    "n": "Isle of Man",
+    "t": [
+      "Europe/Isle_of_Man"
+    ],
+    "la": 54.2361,
+    "lo": -4.5481
+  },
+  {
+    "c": "IL",
+    "n": "Israel",
+    "t": [
+      "Asia/Jerusalem"
+    ],
+    "la": 31.0461,
+    "lo": 34.8516
+  },
+  {
+    "c": "IT",
+    "n": "Italy",
+    "t": [
+      "Europe/Rome"
+    ],
+    "la": 41.8719,
+    "lo": 12.5674
+  },
+  {
+    "c": "JM",
+    "n": "Jamaica",
+    "t": [
+      "America/Jamaica"
+    ],
+    "la": 18.1096,
+    "lo": -77.2975
+  },
+  {
+    "c": "JP",
+    "n": "Japan",
+    "t": [
+      "Asia/Tokyo"
+    ],
+    "la": 36.2048,
+    "lo": 138.2529
+  },
+  {
+    "c": "JE",
+    "n": "Jersey",
+    "t": [
+      "Europe/Jersey"
+    ],
+    "la": 49.2144,
+    "lo": -2.1313
+  },
+  {
+    "c": "JO",
+    "n": "Jordan",
+    "t": [
+      "Asia/Amman"
+    ],
+    "la": 30.5852,
+    "lo": 36.2384
+  },
+  {
+    "c": "KZ",
+    "n": "Kazakhstan",
+    "t": [
+      "Asia/Almaty",
+      "Asia/Aqtau",
+      "Asia/Aqtobe",
+      "Asia/Atyrau",
+      "Asia/Oral",
+      "Asia/Qostanay",
+      "Asia/Qyzylorda"
+    ],
+    "la": 48.0196,
+    "lo": 66.9237
+  },
+  {
+    "c": "KE",
+    "n": "Kenya",
+    "t": [
+      "Africa/Nairobi"
+    ],
+    "la": -0.0236,
+    "lo": 37.9062
+  },
+  {
+    "c": "KI",
+    "n": "Kiribati",
+    "t": [
+      "Pacific/Kanton",
+      "Pacific/Kiritimati",
+      "Pacific/Tarawa"
+    ],
+    "la": -3.3704,
+    "lo": -168.734
+  },
+  {
+    "c": "KP",
+    "n": "Korea, Democratic People's Republic of",
+    "t": [
+      "Asia/Pyongyang"
+    ],
+    "la": 40.3399,
+    "lo": 127.5101
+  },
+  {
+    "c": "KR",
+    "n": "Korea, Republic of",
+    "t": [
+      "Asia/Seoul"
+    ],
+    "la": 35.9078,
+    "lo": 127.7669
+  },
+  {
+    "c": "KW",
+    "n": "Kuwait",
+    "t": [
+      "Asia/Kuwait"
+    ],
+    "la": 29.3117,
+    "lo": 47.4818
+  },
+  {
+    "c": "KG",
+    "n": "Kyrgyzstan",
+    "t": [
+      "Asia/Bishkek"
+    ],
+    "la": 41.2044,
+    "lo": 74.7661
+  },
+  {
+    "c": "LA",
+    "n": "Lao People's Democratic Republic",
+    "t": [
+      "Asia/Vientiane"
+    ],
+    "la": 19.8563,
+    "lo": 102.4955
+  },
+  {
+    "c": "LV",
+    "n": "Latvia",
+    "t": [
+      "Europe/Riga"
+    ],
+    "la": 56.8796,
+    "lo": 24.6032
+  },
+  {
+    "c": "LB",
+    "n": "Lebanon",
+    "t": [
+      "Asia/Beirut"
+    ],
+    "la": 33.8547,
+    "lo": 35.8623
+  },
+  {
+    "c": "LS",
+    "n": "Lesotho",
+    "t": [
+      "Africa/Maseru"
+    ],
+    "la": -29.6099,
+    "lo": 28.2336
+  },
+  {
+    "c": "LR",
+    "n": "Liberia",
+    "t": [
+      "Africa/Monrovia"
+    ],
+    "la": 6.4281,
+    "lo": -9.4295
+  },
+  {
+    "c": "LY",
+    "n": "Libya",
+    "t": [
+      "Africa/Tripoli"
+    ],
+    "la": 26.3351,
+    "lo": 17.2283
+  },
+  {
+    "c": "LI",
+    "n": "Liechtenstein",
+    "t": [
+      "Europe/Vaduz"
+    ],
+    "la": 47.166,
+    "lo": 9.5554
+  },
+  {
+    "c": "LT",
+    "n": "Lithuania",
+    "t": [
+      "Europe/Vilnius"
+    ],
+    "la": 55.1694,
+    "lo": 23.8813
+  },
+  {
+    "c": "LU",
+    "n": "Luxembourg",
+    "t": [
+      "Europe/Luxembourg"
+    ],
+    "la": 49.8153,
+    "lo": 6.1296
+  },
+  {
+    "c": "MO",
+    "n": "Macao",
+    "t": [
+      "Asia/Macau"
+    ],
+    "la": 22.1987,
+    "lo": 113.5439
+  },
+  {
+    "c": "MK",
+    "n": "Macedonia, the Former Yugoslav Republic of",
+    "t": [
+      "Europe/Skopje"
+    ],
+    "la": 41.6086,
+    "lo": 21.7453
+  },
+  {
+    "c": "MG",
+    "n": "Madagascar",
+    "t": [
+      "Indian/Antananarivo"
+    ],
+    "la": -18.7669,
+    "lo": 46.8691
+  },
+  {
+    "c": "MW",
+    "n": "Malawi",
+    "t": [
+      "Africa/Blantyre"
+    ],
+    "la": -13.2543,
+    "lo": 34.3015
+  },
+  {
+    "c": "MY",
+    "n": "Malaysia",
+    "t": [
+      "Asia/Kuala_Lumpur",
+      "Asia/Kuching"
+    ],
+    "la": 4.2105,
+    "lo": 101.9758
+  },
+  {
+    "c": "MV",
+    "n": "Maldives",
+    "t": [
+      "Indian/Maldives"
+    ],
+    "la": 3.2028,
+    "lo": 73.2207
+  },
+  {
+    "c": "ML",
+    "n": "Mali",
+    "t": [
+      "Africa/Bamako"
+    ],
+    "la": 17.5707,
+    "lo": -3.9962
+  },
+  {
+    "c": "MT",
+    "n": "Malta",
+    "t": [
+      "Europe/Malta"
+    ],
+    "la": 35.9375,
+    "lo": 14.3754
+  },
+  {
+    "c": "MH",
+    "n": "Marshall Islands",
+    "t": [
+      "Pacific/Kwajalein",
+      "Pacific/Majuro"
+    ],
+    "la": 7.1315,
+    "lo": 171.1845
+  },
+  {
+    "c": "MQ",
+    "n": "Martinique",
+    "t": [
+      "America/Martinique"
+    ],
+    "la": 14.6415,
+    "lo": -61.0242
+  },
+  {
+    "c": "MR",
+    "n": "Mauritania",
+    "t": [
+      "Africa/Nouakchott"
+    ],
+    "la": 21.0079,
+    "lo": -10.9408
+  },
+  {
+    "c": "MU",
+    "n": "Mauritius",
+    "t": [
+      "Indian/Mauritius"
+    ],
+    "la": -20.3484,
+    "lo": 57.5522
+  },
+  {
+    "c": "YT",
+    "n": "Mayotte",
+    "t": [
+      "Indian/Mayotte"
+    ],
+    "la": -12.8275,
+    "lo": 45.1662
+  },
+  {
+    "c": "MX",
+    "n": "Mexico",
+    "t": [
+      "America/Bahia_Banderas",
+      "America/Cancun",
+      "America/Chihuahua",
+      "America/Ciudad_Juarez",
+      "America/Hermosillo",
+      "America/Matamoros",
+      "America/Mazatlan",
+      "America/Merida",
+      "America/Mexico_City",
+      "America/Monterrey",
+      "America/Ojinaga",
+      "America/Tijuana"
+    ],
+    "la": 23.6345,
+    "lo": -102.5528
+  },
+  {
+    "c": "FM",
+    "n": "Micronesia, Federated States of",
+    "t": [
+      "Pacific/Chuuk",
+      "Pacific/Kosrae",
+      "Pacific/Pohnpei"
+    ],
+    "la": 7.4256,
+    "lo": 150.5508
+  },
+  {
+    "c": "MD",
+    "n": "Moldova, Republic of",
+    "t": [
+      "Europe/Chisinau"
+    ],
+    "la": 47.4116,
+    "lo": 28.3699
+  },
+  {
+    "c": "MC",
+    "n": "Monaco",
+    "t": [
+      "Europe/Monaco"
+    ],
+    "la": 43.7384,
+    "lo": 7.4246
+  },
+  {
+    "c": "MN",
+    "n": "Mongolia",
+    "t": [
+      "Asia/Hovd",
+      "Asia/Ulaanbaatar"
+    ],
+    "la": 46.8625,
+    "lo": 103.8467
+  },
+  {
+    "c": "ME",
+    "n": "Montenegro",
+    "t": [
+      "Europe/Podgorica"
+    ],
+    "la": 42.7087,
+    "lo": 19.3744
+  },
+  {
+    "c": "MS",
+    "n": "Montserrat",
+    "t": [
+      "America/Montserrat"
+    ],
+    "la": 16.7425,
+    "lo": -62.1874
+  },
+  {
+    "c": "MA",
+    "n": "Morocco",
+    "t": [
+      "Africa/Casablanca",
+      "Africa/El_Aaiun"
+    ],
+    "la": 31.7917,
+    "lo": -7.0926
+  },
+  {
+    "c": "MZ",
+    "n": "Mozambique",
+    "t": [
+      "Africa/Maputo"
+    ],
+    "la": -18.6657,
+    "lo": 35.5296
+  },
+  {
+    "c": "MM",
+    "n": "Myanmar",
+    "t": [
+      "Asia/Yangon"
+    ],
+    "la": 21.9162,
+    "lo": 95.956
+  },
+  {
+    "c": "NA",
+    "n": "Namibia",
+    "t": [
+      "Africa/Windhoek"
+    ],
+    "la": -22.9576,
+    "lo": 18.4904
+  },
+  {
+    "c": "NR",
+    "n": "Nauru",
+    "t": [
+      "Pacific/Nauru"
+    ],
+    "la": -0.5228,
+    "lo": 166.9315
+  },
+  {
+    "c": "NP",
+    "n": "Nepal",
+    "t": [
+      "Asia/Kathmandu"
+    ],
+    "la": 28.3949,
+    "lo": 84.124
+  },
+  {
+    "c": "NL",
+    "n": "Netherlands",
+    "t": [
+      "Europe/Amsterdam"
+    ],
+    "la": 52.1326,
+    "lo": 5.2913
+  },
+  {
+    "c": "NC",
+    "n": "New Caledonia",
+    "t": [
+      "Pacific/Noumea"
+    ],
+    "la": -20.9043,
+    "lo": 165.618
+  },
+  {
+    "c": "NZ",
+    "n": "New Zealand",
+    "t": [
+      "Pacific/Auckland",
+      "Pacific/Chatham"
+    ],
+    "la": -40.9006,
+    "lo": 174.886
+  },
+  {
+    "c": "NI",
+    "n": "Nicaragua",
+    "t": [
+      "America/Managua"
+    ],
+    "la": 12.8654,
+    "lo": -85.2072
+  },
+  {
+    "c": "NE",
+    "n": "Niger",
+    "t": [
+      "Africa/Niamey"
+    ],
+    "la": 17.6078,
+    "lo": 8.0817
+  },
+  {
+    "c": "NG",
+    "n": "Nigeria",
+    "t": [
+      "Africa/Lagos"
+    ],
+    "la": 9.082,
+    "lo": 8.6753
+  },
+  {
+    "c": "NU",
+    "n": "Niue",
+    "t": [
+      "Pacific/Niue"
+    ],
+    "la": -19.0544,
+    "lo": -169.8672
+  },
+  {
+    "c": "NF",
+    "n": "Norfolk Island",
+    "t": [
+      "Pacific/Norfolk"
+    ],
+    "la": -29.0408,
+    "lo": 167.9547
+  },
+  {
+    "c": "MP",
+    "n": "Northern Mariana Islands",
+    "t": [
+      "Pacific/Saipan"
+    ],
+    "la": 15.0979,
+    "lo": 145.6739
+  },
+  {
+    "c": "NO",
+    "n": "Norway",
+    "t": [
+      "Europe/Oslo"
+    ],
+    "la": 60.472,
+    "lo": 8.4689
+  },
+  {
+    "c": "OM",
+    "n": "Oman",
+    "t": [
+      "Asia/Muscat"
+    ],
+    "la": 21.4735,
+    "lo": 55.9754
+  },
+  {
+    "c": "PK",
+    "n": "Pakistan",
+    "t": [
+      "Asia/Karachi"
+    ],
+    "la": 30.3753,
+    "lo": 69.3451
+  },
+  {
+    "c": "PW",
+    "n": "Palau",
+    "t": [
+      "Pacific/Palau"
+    ],
+    "la": 7.5149,
+    "lo": 134.5825
+  },
+  {
+    "c": "PS",
+    "n": "Palestine, State of",
+    "t": [
+      "Asia/Gaza",
+      "Asia/Hebron"
+    ],
+    "la": 31.9522,
+    "lo": 35.2332
+  },
+  {
+    "c": "PA",
+    "n": "Panama",
+    "t": [
+      "America/Panama"
+    ],
+    "la": 8.538,
+    "lo": -80.7821
+  },
+  {
+    "c": "PG",
+    "n": "Papua New Guinea",
+    "t": [
+      "Pacific/Bougainville",
+      "Pacific/Port_Moresby"
+    ],
+    "la": -6.3149,
+    "lo": 143.9555
+  },
+  {
+    "c": "PY",
+    "n": "Paraguay",
+    "t": [
+      "America/Asuncion"
+    ],
+    "la": -23.4425,
+    "lo": -58.4438
+  },
+  {
+    "c": "PE",
+    "n": "Peru",
+    "t": [
+      "America/Lima"
+    ],
+    "la": -9.19,
+    "lo": -75.0152
+  },
+  {
+    "c": "PH",
+    "n": "Philippines",
+    "t": [
+      "Asia/Manila"
+    ],
+    "la": 12.8797,
+    "lo": 121.774
+  },
+  {
+    "c": "PN",
+    "n": "Pitcairn",
+    "t": [
+      "Pacific/Pitcairn"
+    ],
+    "la": -24.7036,
+    "lo": -127.4393
+  },
+  {
+    "c": "PL",
+    "n": "Poland",
+    "t": [
+      "Europe/Warsaw"
+    ],
+    "la": 51.9194,
+    "lo": 19.1451
+  },
+  {
+    "c": "PT",
+    "n": "Portugal",
+    "t": [
+      "Atlantic/Azores",
+      "Atlantic/Madeira",
+      "Europe/Lisbon"
+    ],
+    "la": 39.3999,
+    "lo": -8.2245
+  },
+  {
+    "c": "PR",
+    "n": "Puerto Rico",
+    "t": [
+      "America/Puerto_Rico"
+    ],
+    "la": 18.2208,
+    "lo": -66.5901
+  },
+  {
+    "c": "QA",
+    "n": "Qatar",
+    "t": [
+      "Asia/Qatar"
+    ],
+    "la": 25.3548,
+    "lo": 51.1839
+  },
+  {
+    "c": "RO",
+    "n": "Romania",
+    "t": [
+      "Europe/Bucharest"
+    ],
+    "la": 45.9432,
+    "lo": 24.9668
+  },
+  {
+    "c": "RU",
+    "n": "Russian Federation",
+    "t": [
+      "Asia/Anadyr",
+      "Asia/Barnaul",
+      "Asia/Chita",
+      "Asia/Irkutsk",
+      "Asia/Kamchatka",
+      "Asia/Khandyga",
+      "Asia/Krasnoyarsk",
+      "Asia/Magadan",
+      "Asia/Novokuznetsk",
+      "Asia/Novosibirsk",
+      "Asia/Omsk",
+      "Asia/Sakhalin",
+      "Asia/Srednekolymsk",
+      "Asia/Tomsk",
+      "Asia/Ust-Nera",
+      "Asia/Vladivostok",
+      "Asia/Yakutsk",
+      "Asia/Yekaterinburg",
+      "Europe/Astrakhan",
+      "Europe/Kaliningrad",
+      "Europe/Kirov",
+      "Europe/Moscow",
+      "Europe/Samara",
+      "Europe/Saratov",
+      "Europe/Ulyanovsk",
+      "Europe/Volgograd"
+    ],
+    "la": 61.524,
+    "lo": 105.3188
+  },
+  {
+    "c": "RW",
+    "n": "Rwanda",
+    "t": [
+      "Africa/Kigali"
+    ],
+    "la": -1.9403,
+    "lo": 29.8739
+  },
+  {
+    "c": "RE",
+    "n": "Réunion",
+    "t": [
+      "Indian/Reunion"
+    ],
+    "la": -21.1151,
+    "lo": 55.5364
+  },
+  {
+    "c": "BL",
+    "n": "Saint Barthélemy",
+    "t": [
+      "America/St_Barthelemy"
+    ],
+    "la": 17.9,
+    "lo": -62.8333
+  },
+  {
+    "c": "SH",
+    "n": "Saint Helena, Ascension and Tristan da Cunha",
+    "t": [
+      "Atlantic/St_Helena"
+    ],
+    "la": -15.965,
+    "lo": -5.7089
+  },
+  {
+    "c": "KN",
+    "n": "Saint Kitts and Nevis",
+    "t": [
+      "America/St_Kitts"
+    ],
+    "la": 17.3578,
+    "lo": -62.783
+  },
+  {
+    "c": "LC",
+    "n": "Saint Lucia",
+    "t": [
+      "America/St_Lucia"
+    ],
+    "la": 13.9094,
+    "lo": -60.9789
+  },
+  {
+    "c": "MF",
+    "n": "Saint Martin (French part)",
+    "t": [
+      "America/Marigot"
+    ],
+    "la": 18.0708,
+    "lo": -63.0501
+  },
+  {
+    "c": "PM",
+    "n": "Saint Pierre and Miquelon",
+    "t": [
+      "America/Miquelon"
+    ],
+    "la": 46.8852,
+    "lo": -56.3159
+  },
+  {
+    "c": "VC",
+    "n": "Saint Vincent and the Grenadines",
+    "t": [
+      "America/St_Vincent"
+    ],
+    "la": 12.9843,
+    "lo": -61.2872
+  },
+  {
+    "c": "WS",
+    "n": "Samoa",
+    "t": [
+      "Pacific/Apia"
+    ],
+    "la": -13.759,
+    "lo": -172.1046
+  },
+  {
+    "c": "SM",
+    "n": "San Marino",
+    "t": [
+      "Europe/San_Marino"
+    ],
+    "la": 43.9424,
+    "lo": 12.4578
+  },
+  {
+    "c": "ST",
+    "n": "Sao Tome and Principe",
+    "t": [
+      "Africa/Sao_Tome"
+    ],
+    "la": 0.1864,
+    "lo": 6.6131
+  },
+  {
+    "c": "SA",
+    "n": "Saudi Arabia",
+    "t": [
+      "Asia/Riyadh"
+    ],
+    "la": 23.8859,
+    "lo": 45.0792
+  },
+  {
+    "c": "SN",
+    "n": "Senegal",
+    "t": [
+      "Africa/Dakar"
+    ],
+    "la": 14.4974,
+    "lo": -14.4524
+  },
+  {
+    "c": "RS",
+    "n": "Serbia",
+    "t": [
+      "Europe/Belgrade"
+    ],
+    "la": 44.0165,
+    "lo": 21.0059
+  },
+  {
+    "c": "SC",
+    "n": "Seychelles",
+    "t": [
+      "Indian/Mahe"
+    ],
+    "la": -4.6796,
+    "lo": 55.492
+  },
+  {
+    "c": "SL",
+    "n": "Sierra Leone",
+    "t": [
+      "Africa/Freetown"
+    ],
+    "la": 8.4606,
+    "lo": -11.7799
+  },
+  {
+    "c": "SG",
+    "n": "Singapore",
+    "t": [
+      "Asia/Singapore"
+    ],
+    "la": 1.3521,
+    "lo": 103.8198
+  },
+  {
+    "c": "SX",
+    "n": "Sint Maarten (Dutch part)",
+    "t": [
+      "America/Lower_Princes"
+    ],
+    "la": 18.0425,
+    "lo": -63.0548
+  },
+  {
+    "c": "SK",
+    "n": "Slovakia",
+    "t": [
+      "Europe/Bratislava"
+    ],
+    "la": 48.669,
+    "lo": 19.699
+  },
+  {
+    "c": "SI",
+    "n": "Slovenia",
+    "t": [
+      "Europe/Ljubljana"
+    ],
+    "la": 46.1512,
+    "lo": 14.9955
+  },
+  {
+    "c": "SB",
+    "n": "Solomon Islands",
+    "t": [
+      "Pacific/Guadalcanal"
+    ],
+    "la": -9.6457,
+    "lo": 160.1562
+  },
+  {
+    "c": "SO",
+    "n": "Somalia",
+    "t": [
+      "Africa/Mogadishu"
+    ],
+    "la": 5.1521,
+    "lo": 46.1996
+  },
+  {
+    "c": "ZA",
+    "n": "South Africa",
+    "t": [
+      "Africa/Johannesburg"
+    ],
+    "la": -30.5595,
+    "lo": 22.9375
+  },
+  {
+    "c": "GS",
+    "n": "South Georgia and the South Sandwich Islands",
+    "t": [
+      "Atlantic/South_Georgia"
+    ],
+    "la": -54.4296,
+    "lo": -36.5879
+  },
+  {
+    "c": "SS",
+    "n": "South Sudan",
+    "t": [
+      "Africa/Juba"
+    ],
+    "la": 6.8769,
+    "lo": 31.3069
+  },
+  {
+    "c": "ES",
+    "n": "Spain",
+    "t": [
+      "Africa/Ceuta",
+      "Atlantic/Canary",
+      "Europe/Madrid"
+    ],
+    "la": 40.4637,
+    "lo": -3.7492
+  },
+  {
+    "c": "LK",
+    "n": "Sri Lanka",
+    "t": [
+      "Asia/Colombo"
+    ],
+    "la": 7.8731,
+    "lo": 80.7718
+  },
+  {
+    "c": "SD",
+    "n": "Sudan",
+    "t": [
+      "Africa/Khartoum"
+    ],
+    "la": 12.8628,
+    "lo": 30.2176
+  },
+  {
+    "c": "SR",
+    "n": "Suriname",
+    "t": [
+      "America/Paramaribo"
+    ],
+    "la": 3.9193,
+    "lo": -56.0278
+  },
+  {
+    "c": "SJ",
+    "n": "Svalbard and Jan Mayen",
+    "t": [
+      "Arctic/Longyearbyen"
+    ],
+    "la": 77.5536,
+    "lo": 23.6703
+  },
+  {
+    "c": "SZ",
+    "n": "Swaziland",
+    "t": [
+      "Africa/Mbabane"
+    ],
+    "la": -26.5225,
+    "lo": 31.4659
+  },
+  {
+    "c": "SE",
+    "n": "Sweden",
+    "t": [
+      "Europe/Stockholm"
+    ],
+    "la": 60.1282,
+    "lo": 18.6435
+  },
+  {
+    "c": "CH",
+    "n": "Switzerland",
+    "t": [
+      "Europe/Zurich"
+    ],
+    "la": 46.8182,
+    "lo": 8.2275
+  },
+  {
+    "c": "SY",
+    "n": "Syrian Arab Republic",
+    "t": [
+      "Asia/Damascus"
+    ],
+    "la": 34.8021,
+    "lo": 38.9968
+  },
+  {
+    "c": "TW",
+    "n": "Taiwan, Province of China",
+    "t": [
+      "Asia/Taipei"
+    ],
+    "la": 23.6978,
+    "lo": 120.9605
+  },
+  {
+    "c": "TJ",
+    "n": "Tajikistan",
+    "t": [
+      "Asia/Dushanbe"
+    ],
+    "la": 38.861,
+    "lo": 71.2761
+  },
+  {
+    "c": "TZ",
+    "n": "Tanzania, United Republic of",
+    "t": [
+      "Africa/Dar_es_Salaam"
+    ],
+    "la": -6.369,
+    "lo": 34.8888
+  },
+  {
+    "c": "TH",
+    "n": "Thailand",
+    "t": [
+      "Asia/Bangkok"
+    ],
+    "la": 15.87,
+    "lo": 100.9925
+  },
+  {
+    "c": "TL",
+    "n": "Timor-Leste",
+    "t": [
+      "Asia/Dili"
+    ],
+    "la": -8.8742,
+    "lo": 125.7275
+  },
+  {
+    "c": "TG",
+    "n": "Togo",
+    "t": [
+      "Africa/Lome"
+    ],
+    "la": 8.6195,
+    "lo": 0.8248
+  },
+  {
+    "c": "TK",
+    "n": "Tokelau",
+    "t": [
+      "Pacific/Fakaofo"
+    ],
+    "la": -9.2002,
+    "lo": -171.8484
+  },
+  {
+    "c": "TO",
+    "n": "Tonga",
+    "t": [
+      "Pacific/Tongatapu"
+    ],
+    "la": -21.179,
+    "lo": -175.1982
+  },
+  {
+    "c": "TT",
+    "n": "Trinidad and Tobago",
+    "t": [
+      "America/Port_of_Spain"
+    ],
+    "la": 10.6918,
+    "lo": -61.2225
+  },
+  {
+    "c": "TN",
+    "n": "Tunisia",
+    "t": [
+      "Africa/Tunis"
+    ],
+    "la": 33.8869,
+    "lo": 9.5375
+  },
+  {
+    "c": "TR",
+    "n": "Turkey",
+    "t": [
+      "Europe/Istanbul"
+    ],
+    "la": 38.9637,
+    "lo": 35.2433
+  },
+  {
+    "c": "TM",
+    "n": "Turkmenistan",
+    "t": [
+      "Asia/Ashgabat"
+    ],
+    "la": 38.9697,
+    "lo": 59.5563
+  },
+  {
+    "c": "TC",
+    "n": "Turks and Caicos Islands",
+    "t": [
+      "America/Grand_Turk"
+    ],
+    "la": 21.694,
+    "lo": -71.7979
+  },
+  {
+    "c": "TV",
+    "n": "Tuvalu",
+    "t": [
+      "Pacific/Funafuti"
+    ],
+    "la": -7.1095,
+    "lo": 177.6493
+  },
+  {
+    "c": "UG",
+    "n": "Uganda",
+    "t": [
+      "Africa/Kampala"
+    ],
+    "la": 1.3733,
+    "lo": 32.2903
+  },
+  {
+    "c": "UA",
+    "n": "Ukraine",
+    "t": [
+      "Europe/Kyiv",
+      "Europe/Simferopol"
+    ],
+    "la": 48.3794,
+    "lo": 31.1656
+  },
+  {
+    "c": "AE",
+    "n": "United Arab Emirates",
+    "t": [
+      "Asia/Dubai"
+    ],
+    "la": 23.4241,
+    "lo": 53.8478
+  },
+  {
+    "c": "GB",
+    "n": "United Kingdom",
+    "t": [
+      "Europe/London"
+    ],
+    "la": 55.3781,
+    "lo": -3.436
+  },
+  {
+    "c": "US",
+    "n": "United States",
+    "t": [
+      "America/Adak",
+      "America/Anchorage",
+      "America/Boise",
+      "America/Chicago",
+      "America/Denver",
+      "America/Detroit",
+      "America/Indiana/Indianapolis",
+      "America/Indiana/Knox",
+      "America/Indiana/Marengo",
+      "America/Indiana/Petersburg",
+      "America/Indiana/Tell_City",
+      "America/Indiana/Vevay",
+      "America/Indiana/Vincennes",
+      "America/Indiana/Winamac",
+      "America/Juneau",
+      "America/Kentucky/Louisville",
+      "America/Kentucky/Monticello",
+      "America/Los_Angeles",
+      "America/Menominee",
+      "America/Metlakatla",
+      "America/New_York",
+      "America/Nome",
+      "America/North_Dakota/Beulah",
+      "America/North_Dakota/Center",
+      "America/North_Dakota/New_Salem",
+      "America/Phoenix",
+      "America/Sitka",
+      "America/Yakutat",
+      "Pacific/Honolulu"
+    ],
+    "la": 37.0902,
+    "lo": -95.7129
+  },
+  {
+    "c": "UM",
+    "n": "United States Minor Outlying Islands",
+    "t": [
+      "Pacific/Midway",
+      "Pacific/Wake"
+    ],
+    "la": 19.2823,
+    "lo": 166.647
+  },
+  {
+    "c": "UY",
+    "n": "Uruguay",
+    "t": [
+      "America/Montevideo"
+    ],
+    "la": -32.5228,
+    "lo": -55.7658
+  },
+  {
+    "c": "UZ",
+    "n": "Uzbekistan",
+    "t": [
+      "Asia/Samarkand",
+      "Asia/Tashkent"
+    ],
+    "la": 41.3775,
+    "lo": 64.5853
+  },
+  {
+    "c": "VU",
+    "n": "Vanuatu",
+    "t": [
+      "Pacific/Efate"
+    ],
+    "la": -15.3767,
+    "lo": 166.9592
+  },
+  {
+    "c": "VE",
+    "n": "Venezuela, Bolivarian Republic of",
+    "t": [
+      "America/Caracas"
+    ],
+    "la": 6.4238,
+    "lo": -66.5897
+  },
+  {
+    "c": "VN",
+    "n": "Viet Nam",
+    "t": [
+      "Asia/Ho_Chi_Minh"
+    ],
+    "la": 14.0583,
+    "lo": 108.2772
+  },
+  {
+    "c": "VG",
+    "n": "Virgin Islands, British",
+    "t": [
+      "America/Tortola"
+    ],
+    "la": 18.4207,
+    "lo": -64.64
+  },
+  {
+    "c": "VI",
+    "n": "Virgin Islands, U.S.",
+    "t": [
+      "America/St_Thomas"
+    ],
+    "la": 18.3358,
+    "lo": -64.8963
+  },
+  {
+    "c": "WF",
+    "n": "Wallis and Futuna",
+    "t": [
+      "Pacific/Wallis"
+    ],
+    "la": -13.7687,
+    "lo": -177.1561
+  },
+  {
+    "c": "EH",
+    "n": "Western Sahara",
+    "t": [],
+    "la": 24.2155,
+    "lo": -12.8858
+  },
+  {
+    "c": "YE",
+    "n": "Yemen",
+    "t": [
+      "Asia/Aden"
+    ],
+    "la": 15.5527,
+    "lo": 48.5164
+  },
+  {
+    "c": "ZM",
+    "n": "Zambia",
+    "t": [
+      "Africa/Lusaka"
+    ],
+    "la": -13.1339,
+    "lo": 27.8493
+  },
+  {
+    "c": "ZW",
+    "n": "Zimbabwe",
+    "t": [
+      "Africa/Harare"
+    ],
+    "la": -19.0154,
+    "lo": 29.1549
+  },
+  {
+    "c": "AX",
+    "n": "Åland Islands",
+    "t": [
+      "Europe/Mariehamn"
+    ],
+    "la": 60.1785,
+    "lo": 19.9156
+  }
+]

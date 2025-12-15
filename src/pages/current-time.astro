@@ -1,0 +1,198 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import AdSlot from "../components/AdSlot.astro";
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Current Time by Timezone — TimeSync</title>
+  <meta
+    name="description"
+    content="Check the current time in any timezone. Live updating clock with UTC offset and DST status."
+  />
+
+  <link rel="stylesheet" href="/src/styles/style.css" />
+</head>
+
+<body>
+  <Header />
+
+  <main class="container">
+
+    <!-- TOP AD -->
+    <div style="margin-bottom:24px">
+      <AdSlot slot="1234567890" />
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Current Time by Timezone</h1>
+      <p>
+        See the live current time anywhere in the world.
+        Automatically handles Daylight Saving Time.
+      </p>
+    </section>
+
+    <!-- TOOL -->
+    <section style="display:flex;justify-content:center;margin-top:32px">
+      <div class="tool-box">
+
+        <!-- TIMEZONE -->
+        <div>
+          <label class="muted">Timezone</label>
+          <input
+            id="tz-search"
+            class="input"
+            placeholder="Search (New York, London, India…)"
+          />
+          <select
+            id="timezone"
+            class="select"
+            style="margin-top:8px"
+          ></select>
+        </div>
+
+        <!-- CLOCK -->
+        <div
+          style="
+            margin-top:20px;
+            text-align:center;
+            padding:24px;
+            border-radius:16px;
+            background:linear-gradient(180deg,rgba(0,0,0,0.03),transparent);
+          "
+        >
+          <div
+            id="clock"
+            style="font-size:36px;font-weight:700;letter-spacing:-0.02em"
+          >
+            --:--:--
+          </div>
+          <div id="date" class="muted" style="margin-top:6px"></div>
+        </div>
+
+        <!-- META -->
+        <div class="result" id="meta" style="margin-top:16px">
+          Select a timezone to view details.
+        </div>
+
+        <!-- CTA -->
+        <div
+          style="
+            margin-top:18px;
+            padding:16px;
+            border-radius:14px;
+            background:linear-gradient(180deg,rgba(0,0,0,0.03),transparent);
+          "
+        >
+          <strong>Comparing multiple locations?</strong>
+          <p style="margin:6px 0 12px;color:var(--muted)">
+            Convert times or plan meetings without DST confusion.
+          </p>
+          <a class="button" href="/timezone-converter">
+            Open Timezone Converter →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BOTTOM AD -->
+    <div style="margin-top:36px">
+      <AdSlot slot="0987654321" />
+    </div>
+
+  </main>
+
+  <Footer />
+
+  <!-- LOGIC -->
+  <script type="module">
+    import { populateTimezoneSelect } from "/scripts/timezones.js";
+
+    const tz = populateTimezoneSelect({
+      selectId: "timezone",
+      searchId: "tz-search",
+    });
+
+    const clockEl = document.getElementById("clock");
+    const dateEl = document.getElementById("date");
+    const metaEl = document.getElementById("meta");
+
+    // Default timezone = user
+    tz.select.value =
+      Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+
+    function getOffsetMinutes(date, timeZone) {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone,
+        timeZoneName: "shortOffset",
+      }).formatToParts(date);
+
+      const tzPart = parts.find(p => p.type === "timeZoneName")?.value || "UTC";
+      const match = tzPart.match(/GMT([+-]\d+)(?::(\d+))?/);
+      if (!match) return 0;
+
+      const h = Number(match[1]);
+      const m = Number(match[2] || 0);
+      return h * 60 + (h >= 0 ? m : -m);
+    }
+
+    function isDST(date, zone) {
+      const jan = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+      const jul = new Date(Date.UTC(date.getUTCFullYear(), 6, 1));
+      const offJan = getOffsetMinutes(jan, zone);
+      const offJul = getOffsetMinutes(jul, zone);
+      const cur = getOffsetMinutes(date, zone);
+      return offJan !== offJul && cur === Math.max(offJan, offJul);
+    }
+
+    function update() {
+      const zone = tz.select.value;
+      const now = new Date();
+
+      try {
+        const local = new Date(
+          now.toLocaleString("en-US", { timeZone: zone })
+        );
+
+        clockEl.textContent = local.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        });
+
+        dateEl.textContent = local.toLocaleDateString([], {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+
+        const offset = getOffsetMinutes(now, zone);
+        const dst = isDST(now, zone);
+
+        metaEl.innerHTML = `
+          <div><strong>${zone}</strong></div>
+          <div>UTC offset: <strong>UTC${offset / 60}</strong></div>
+          <div>DST active: <strong style="color:${dst ? "green" : "red"}">
+            ${dst ? "Yes" : "No"}
+          </strong></div>
+        `;
+      } catch {
+        clockEl.textContent = "--:--:--";
+        metaEl.textContent = "Invalid timezone selection.";
+      }
+    }
+
+    tz.select.onchange = update;
+    update();
+    setInterval(update, 1000);
+  </script>
+</body>
+</html>

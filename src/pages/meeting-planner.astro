@@ -89,7 +89,7 @@ import Footer from '../components/Footer.astro';
   ----------------------------------------- */
   let TIMEZONES = [];
   try {
-    const mod = await import('/scripts/timezones.js');
+    const mod = await import('../scripts/timezones.js');
     TIMEZONES = mod.TIMEZONES || [];
   } catch {
     TIMEZONES = ['UTC','Asia/Kolkata','America/New_York','Europe/London'];

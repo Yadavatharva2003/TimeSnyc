@@ -1,0 +1,177 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import AdSlot from "../components/AdSlot.astro";
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Daylight Saving Time Checker — TimeSync</title>
+  <meta
+    name="description"
+    content="Check if a timezone is currently observing Daylight Saving Time (DST). See next DST change dates and UTC offset changes."
+  />
+
+  <link rel="stylesheet" href="/src/styles/style.css" />
+</head>
+
+<body>
+  <Header />
+
+  <main class="container">
+
+    <!-- TOP AD -->
+    <div style="margin-bottom:24px">
+      <AdSlot slot="1234567890" />
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Daylight Saving Time Checker</h1>
+      <p>
+        Check whether a timezone is currently observing DST and
+        see when the next time change happens.
+      </p>
+    </section>
+
+    <!-- TOOL -->
+    <section style="display:flex;justify-content:center;margin-top:32px">
+      <div class="tool-box">
+
+        <!-- TIMEZONE -->
+        <div>
+          <label class="muted">Timezone</label>
+          <input
+            id="tz-search"
+            class="input"
+            placeholder="Search (New York, London, India…)"
+          />
+          <select
+            id="timezone"
+            class="select"
+            style="margin-top:8px"
+          ></select>
+        </div>
+
+        <!-- DATE -->
+        <div class="field" style="margin-top:16px">
+          <label style="min-width:90px">Date</label>
+          <input type="date" class="input" id="dateInput" />
+        </div>
+
+        <!-- RESULT -->
+        <div class="result" id="result" style="margin-top:16px">
+          Select a timezone to check DST status.
+        </div>
+
+        <!-- CTA -->
+        <div
+          style="
+            margin-top:18px;
+            padding:16px;
+            border-radius:14px;
+            background:linear-gradient(180deg,rgba(0,0,0,0.03),transparent);
+          "
+        >
+          <strong>Planning across time zones?</strong>
+          <p style="margin:6px 0 12px;color:var(--muted)">
+            DST changes often break meetings.
+            Use the meeting planner to avoid mistakes.
+          </p>
+          <a class="button" href="/meeting-planner">
+            Open Meeting Planner →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BOTTOM AD -->
+    <div style="margin-top:36px">
+      <AdSlot slot="0987654321" />
+    </div>
+
+  </main>
+
+  <Footer />
+
+  <!-- LOGIC -->
+  <script type="module">
+    import { populateTimezoneSelect } from "/scripts/timezones.js";
+
+    const tz = populateTimezoneSelect({
+      selectId: "timezone",
+      searchId: "tz-search",
+    });
+
+    const dateInput = document.getElementById("dateInput");
+    const result = document.getElementById("result");
+
+    // Defaults
+    const today = new Date();
+    dateInput.valueAsDate = today;
+    tz.select.value = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+
+    function getOffsetMinutes(date, timeZone) {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone,
+        timeZoneName: "shortOffset",
+      }).formatToParts(date);
+
+      const tzPart = parts.find(p => p.type === "timeZoneName")?.value || "UTC";
+      const match = tzPart.match(/GMT([+-]\d+)(?::(\d+))?/);
+      if (!match) return 0;
+
+      const h = Number(match[1]);
+      const m = Number(match[2] || 0);
+      return h * 60 + (h >= 0 ? m : -m);
+    }
+
+    function checkDST() {
+      const zone = tz.select.value;
+      const baseDate = new Date(dateInput.value);
+
+      try {
+        const jan = new Date(Date.UTC(baseDate.getFullYear(), 0, 1));
+        const jul = new Date(Date.UTC(baseDate.getFullYear(), 6, 1));
+
+        const janOffset = getOffsetMinutes(jan, zone);
+        const julOffset = getOffsetMinutes(jul, zone);
+
+        const observesDST = janOffset !== julOffset;
+
+        const currentOffset = getOffsetMinutes(baseDate, zone);
+        const isDST = observesDST && currentOffset === Math.max(janOffset, julOffset);
+
+        result.innerHTML = `
+          <div>
+            <strong>${zone}</strong>
+          </div>
+          <div style="margin-top:6px">
+            DST observed: <strong>${observesDST ? "Yes" : "No"}</strong>
+          </div>
+          <div>
+            DST active now:
+            <strong style="color:${isDST ? "green" : "red"}">
+              ${isDST ? "Yes" : "No"}
+            </strong>
+          </div>
+          <div>
+            Current UTC offset: <strong>UTC${currentOffset / 60}</strong>
+          </div>
+        `;
+      } catch {
+        result.textContent = "Unable to determine DST for this timezone.";
+      }
+    }
+
+    tz.select.onchange = checkDST;
+    dateInput.onchange = checkDST;
+
+    checkDST();
+  </script>
+</body>
+</html>
