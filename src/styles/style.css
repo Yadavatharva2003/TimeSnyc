@@ -308,3 +308,106 @@ body {
 #reaction-box {
   user-select: none;
 }
+/* =========================
+   BLOG LAYOUT (SAFE)
+========================= */
+
+.blog-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-sidebar {
+    display: none;
+  }
+}
+
+/* =========================
+   BLOG CONTENT
+========================= */
+
+.blog-article {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.blog-article section {
+  margin-bottom: 44px;
+}
+
+/* Typography */
+.blog-article h1 {
+  font-size: 2.5rem;
+  line-height: 1.25;
+}
+
+.blog-article h2 {
+  font-size: 1.7rem;
+  margin-top: 36px;
+}
+
+.blog-article p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* =========================
+   IMAGES (SAFE)
+========================= */
+
+.blog-image {
+  margin: 36px auto;
+  text-align: center;
+}
+
+.blog-image img {
+  width: 960px;
+  max-width: 100%;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto;
+}
+
+.blog-image figcaption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* =========================
+   TOC
+========================= */
+
+.blog-sidebar {
+  position: sticky;
+  top: 96px;
+}
+
+.toc-card {
+  padding: 18px;
+  border-radius: 14px;
+}
+
+/* =========================
+   ADS
+========================= */
+
+.ad-inline {
+  margin: 42px 0;
+  text-align: center;
+}
+
+.ad-placeholder {
+  padding: 20px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+}

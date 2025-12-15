@@ -1,0 +1,272 @@
+---
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const toc = [
+  { id: 'intro', label: 'Introduction' },
+  { id: 'why-hard', label: 'Why Time Zones Are Hard' },
+  { id: 'mistakes', label: 'Common Mistakes' },
+  { id: 'step-1', label: 'Anchor to a Time Zone' },
+  { id: 'step-2', label: 'Compare Local Times' },
+  { id: 'step-3', label: 'Overlapping Work Hours' },
+  { id: 'step-4', label: 'Daylight Saving Time' },
+  { id: 'final', label: 'Final Thoughts' }
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>How to Plan Meetings Across Different Time Zones Without Confusion</title>
+    <meta
+      name="description"
+      content="A complete, practical guide to planning meetings across time zones. Avoid DST mistakes, find overlapping work hours, and schedule global meetings confidently."
+    />
+
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/style.css" />
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://timesync.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://timesync.online/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "How to Plan Meetings Across Time Zones",
+            "item": "https://timesync.online/blog/how-to-plan-meetings-across-time-zones/"
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <Header />
+
+    <main class="container blog-layout">
+      <!-- SIDEBAR -->
+      <aside class="blog-sidebar">
+        <div class="toc-card">
+          <h4>On this page</h4>
+          <ul>
+            {toc.map(i => (
+              <li><a href={`#${i.id}`}>{i.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="ad-box">
+          <div class="ad-placeholder">Advertisement</div>
+        </div>
+      </aside>
+
+      <!-- ARTICLE -->
+      <article class="blog-article">
+        <h1>How to Plan Meetings Across Different Time Zones Without Confusion</h1>
+        <p class="muted">
+          A deep, real-world guide for remote teams, freelancers, founders, and
+          global businesses working across multiple time zones.
+        </p>
+
+        <!-- TOP AD -->
+        <div class="ad-inline"><div class="ad-placeholder">Advertisement</div></div>
+
+        <!-- HERO IMAGE -->
+        <figure class="blog-image">
+          <img
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80"
+            alt="Remote team collaborating across time zones"
+            loading="lazy"
+          />
+          <figcaption>Remote teams coordinating across countries and time zones</figcaption>
+        </figure>
+
+        <!-- INTRO -->
+        <section id="intro">
+          <p>
+            Scheduling meetings across different time zones is one of the most
+            underestimated challenges of modern work. What seems like a simple
+            calendar task often turns into missed calls, confused participants,
+            and unnecessary frustration.
+          </p>
+
+          <p>
+            As remote and hybrid work become standard, teams now span continents.
+            Designers in India work with clients in the US, developers in Europe
+            collaborate with founders in Asia, and operations teams coordinate
+            across nearly every time zone on the planet.
+          </p>
+
+          <p>
+            This guide explains not just <em>what</em> to do, but <strong>why</strong>
+            time zone mistakes happen and how to eliminate them permanently using
+            the right process and tools.
+          </p>
+        </section>
+
+        <!-- WHY HARD -->
+        <section id="why-hard">
+          <h2>Why Time Zones Make Meeting Planning So Hard</h2>
+
+          <p>
+            Time zones are shaped by geography, politics, and seasonal clock
+            changes. Two countries may be five hours apart today and six hours
+            apart next month because of daylight saving time.
+          </p>
+
+          <p>
+            On top of that, work hours differ widely. A reasonable meeting time
+            in one region may fall late at night or very early in the morning for
+            another participant.
+          </p>
+
+          <ul>
+            <li>Different UTC offsets</li>
+            <li>Daylight Saving Time transitions</li>
+            <li>Non-overlapping work schedules</li>
+            <li>Manual conversion errors</li>
+          </ul>
+        </section>
+
+        <figure class="blog-image">
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80"
+            alt="World map showing global time zones"
+            loading="lazy"
+          />
+          <figcaption>Time zones vary widely across the globe</figcaption>
+        </figure>
+
+        <!-- MISTAKES -->
+        <section id="mistakes">
+          <h2>Common Mistakes People Make</h2>
+
+          <p>
+            Most scheduling issues happen because people rely on assumptions.
+            Manual time conversion, forgetting to specify a timezone, or assuming
+            everyone follows the same DST rules are extremely common mistakes.
+          </p>
+
+          <p>
+            Over time, these small errors erode trust. Participants double-check
+            invites, show up late, or skip meetings entirely because of confusion.
+          </p>
+        </section>
+
+        <!-- STEP 1 -->
+        <section id="step-1">
+          <h2>Step 1: Always Anchor the Meeting to a Time Zone</h2>
+
+          <p>
+            A meeting time without a timezone is incomplete information. Always
+            specify a clear reference like IST, UTC, ET, or BST.
+          </p>
+
+          <p>
+            This single habit eliminates the majority of scheduling confusion
+            before it even begins.
+          </p>
+        </section>
+
+        <!-- MID AD -->
+        <div class="ad-inline"><div class="ad-placeholder">Advertisement</div></div>
+
+        <!-- STEP 2 -->
+        <section id="step-2">
+          <h2>Step 2: Compare Everyone’s Local Time</h2>
+
+          <p>
+            Before sending a meeting invite, check how the selected time appears
+            for every participant. This prevents accidentally scheduling meetings
+            during off-hours.
+          </p>
+
+          <p>
+            A dedicated
+            <a href="/meeting-time-planner/">Meeting Time Planner</a>
+            instantly shows accurate local times for all participants.
+          </p>
+        </section>
+
+        <figure class="blog-image">
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80"
+            alt="Multiple clocks showing different cities"
+            loading="lazy"
+          />
+          <figcaption>Comparing time across multiple cities</figcaption>
+        </figure>
+
+        <!-- STEP 3 -->
+        <section id="step-3">
+          <h2>Step 3: Find Overlapping Work Hours</h2>
+
+          <p>
+            The best meeting time is not when clocks align, but when people are
+            actually available and alert. Prioritize overlapping work hours
+            whenever possible.
+          </p>
+        </section>
+
+        <!-- STEP 4 -->
+        <section id="step-4">
+          <h2>Step 4: Account for Daylight Saving Time</h2>
+
+          <p>
+            Daylight Saving Time silently shifts meeting times when one country
+            changes clocks and another does not. Always verify DST status for
+            recurring meetings.
+          </p>
+        </section>
+
+        <figure class="blog-image">
+          <img
+            src="https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=1400&q=80"
+            alt="Clock representing daylight saving time"
+            loading="lazy"
+          />
+          <figcaption>DST can silently shift meeting times</figcaption>
+        </figure>
+
+        <!-- FINAL -->
+        <section id="final">
+          <h2>Final Thoughts</h2>
+
+          <p>
+            Time zone confusion is not a people problem — it is a tooling and
+            process problem. With a consistent approach and DST-aware tools,
+            global meetings become predictable and respectful.
+          </p>
+          
+        </section>
+        
+
+        <!-- BOTTOM AD -->
+        <div class="ad-inline"><div class="ad-placeholder">Advertisement</div></div>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>
