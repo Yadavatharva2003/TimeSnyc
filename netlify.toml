@@ -1,3 +1,21 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[[redirects]]
+  from = "/sitemap-:num.xml"
+  to = "/sitemap-:num.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sitemap-index.xml"
+  to = "/sitemap-index.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+  force = true
