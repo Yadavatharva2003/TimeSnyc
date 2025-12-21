@@ -11,10 +11,10 @@ const { slot = '', format = 'auto' } = Astro.props;
   import { registerAdSlot } from '/src/scripts/ads-manager.js';
   const el = document.currentScript.previousElementSibling;
   registerAdSlot(el);
-  const pref = localStorage.getItem('timesync_cookie_pref');
+  const pref = localStorage.getItem('timesnyc_cookie_pref');
   try{
     const p = JSON.parse(pref || 'null');
-    if(p && p.ads === true && window.__timesyncAcceptAds) window.__timesyncAcceptAds();
+    if(p && p.ads === true && window.__timesnycAcceptAds) window.__timesnycAcceptAds();
   }catch(e){}
 </script>
 
