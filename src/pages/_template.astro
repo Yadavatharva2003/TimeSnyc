@@ -1,0 +1,26 @@
+---
+const { title = "TimeSync" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- favicon (light & dark theme support) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
+
+    <!-- page title -->
+    <title>{title}</title>
+
+    <!-- allow pages to inject extra head content -->
+    <slot name="head" />
+  </head>
+
+  <body>
+    <!-- page content injects here -->
+    <slot />
+  </body>
+</html>
