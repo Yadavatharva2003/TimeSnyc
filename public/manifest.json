@@ -1,6 +1,6 @@
 {
-  "name": "TimeSync",
-  "short_name": "TimeSync",
+  "name": "TimeSnyc",
+  "short_name": "TimeSnyc",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
