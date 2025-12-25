@@ -42,7 +42,7 @@ export function loadAdsNow() {
 }
 
 window.__timesnycAcceptAds = () => {
-  import("/src/scripts/ads-manager.js")
+  import("/scripts/ads-manager.js")
     .then((mod) => mod.loadAdsNow())
     .catch(() => {
       /*fail silently*/

@@ -8,7 +8,7 @@ const { slot = '', format = 'auto' } = Astro.props;
 </div>
 
 <script type="module">
-  import { registerAdSlot } from '/src/scripts/ads-manager.js';
+  import { registerAdSlot } from '/scripts/ads-manager.js';
   const el = document.currentScript.previousElementSibling;
   registerAdSlot(el);
   const pref = localStorage.getItem('timesnyc_cookie_pref');
